@@ -1,24 +1,55 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリ概要
 
-Things you may want to cover:
+お子さんに与えている毎月のお小遣い。
+「お小遣いが足りないからもっと値上げして欲しい」という要望を一度は受けたことが
+あるはず。
+これはお子さんが実際にどんな事にお金を使ってるのかを把握し、無駄遣いを防止させる
+事を目的として作成されたアプリである。
 
-* Ruby version
+## 開発言語
 
-* System dependencies
+* Ruby 2.6.5
+* Ruby on Rails 5.2.6
 
-* Configuration
+## 就業Term内で取り入れる技術
 
-* Database creation
+* devise
+* Ajaxを使ったコメント機能
 
-* Database initialization
+## カリキュラム外の技術
+* chartkick（グラフ作成機能）
 
-* How to run the test suite
+## その他の技術(時間に余裕があれば実装)
+* kaminari
 
-* Services (job queues, cache servers, search engines, etc.)
+## 実行手順
 
-* Deployment instructions
+```bash
+$ git clone git@github.com:hiroaki-kudo/money_management.git
+$ cd money_management
+$ bundle install  
+$ rails db:create db:migrate  
+$ rails s
+```
 
-* ...
+## カタログ設計
+
+https://docs.google.com/spreadsheets/d/1uUp3BSe-X_zARMMl2ngKnlKMjEcAk6nwmXc6zUmMhjw/edit#gid=1012965367
+
+## テーブル定義書
+
+https://docs.google.com/spreadsheets/d/1uUp3BSe-X_zARMMl2ngKnlKMjEcAk6nwmXc6zUmMhjw/edit#gid=971568901
+
+## ER図
+
+https://cacoo.com/diagrams/5j8ByDLOhSLW70Cb/202A7?reload_rt=1628512839676_0
+
+## 画面遷移図
+
+https://cacoo.com/diagrams/5j8ByDLOhSLW70Cb/77D39?reload_rt=1628512839676_0
+
+## ワイヤーフレーム
+
+https://cacoo.com/diagrams/5j8ByDLOhSLW70Cb/AE0FC?reload_rt=1628512839676_0
