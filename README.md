@@ -2,7 +2,11 @@
 
 ## アプリ概要
 
-これはお金の管理が苦手な人が管理できるようになる事を目的として作成されたアプリである。		
+お子さんに与えている毎月のお小遣い。
+「お小遣いが足りないからもっと値上げして欲しい」という要望を一度は受けたことが
+あるはず。
+これはお子さんが実際にどんな事にお金を使ってるのかを把握し、無駄遣いを防止させる
+事を目的として作成されたアプリである。		
 
 ## 開発言語
 
@@ -44,9 +48,13 @@ https://docs.google.com/spreadsheets/d/1uUp3BSe-X_zARMMl2ngKnlKMjEcAk6nwmXc6zUmM
 
 https://cacoo.com/diagrams/5j8ByDLOhSLW70Cb/202A7?reload_rt=1628643824047_0
 
+![ER図](https://user-images.githubusercontent.com/83793785/129036820-b8670bc2-a480-4e41-ab24-65851d879aba.png)
+
 ## 画面遷移図
 
 https://cacoo.com/diagrams/5j8ByDLOhSLW70Cb/77D39?reload_rt=1628512839676_0
+
+![画面遷移図](https://user-images.githubusercontent.com/83793785/129036656-f2d10cfb-ff6e-4981-905b-784518f9481d.png)
 
 ## ワイヤーフレーム
 
