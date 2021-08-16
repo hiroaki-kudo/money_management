@@ -11,7 +11,7 @@
 <% @treasurers.each do |treasurer| %>
   <tr>
     <td><%= Date.today %></td>
-    <td><%= treasurer.category_id %></td>
+    <td><%= treasurer.category.name %></td>
     <td><%= treasurer.use_what %></td>
     <td><%= treasurer.use_money %></td>
     <td><%= treasurer.get_money %></td>

@@ -15,7 +15,7 @@
   </div>
   <div class="treasurers_category_id">
     <%= form.label :category_id %>
-    <%= form.text_field :category_id %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name, {}) %>
   </div>
   <div class="treasurers_use_what">
     <%= form.label :use_what %>

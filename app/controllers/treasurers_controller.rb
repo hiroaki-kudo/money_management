@@ -2,6 +2,7 @@ class TreasurersController < ApplicationController
   before_action :set_treasurer, only:[:show, :edit, :update, :destroy]
   def index
     @treasurers = Treasurer.all
+    # @category = Category.all
   end
   def new
     @treasurer = Treasurer.new
