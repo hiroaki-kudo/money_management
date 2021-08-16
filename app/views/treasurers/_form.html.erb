@@ -1,0 +1,33 @@
+<%= form_with(model: @treasurer, local: true, url: choose_new_or_edit) do |form| %>
+  <% if @treasurer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @treasurer.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @treasurer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="treasurers_use_date_at">
+    <%= form.label :use_date_at %>
+    <%= form.text_field :use_date_at %>
+  </div>
+  <div class="treasurers_category_id">
+    <%= form.label :category_id %>
+    <%= form.text_field :category_id %>
+  </div>
+  <div class="treasurers_use_what">
+    <%= form.label :use_what %>
+    <%= form.text_field :use_what %>
+  </div>
+  <div class="treasurers_use_money">
+    <%= form.label :use_money %>
+    <%= form.text_field :use_money %>
+  </div>
+  <div class="treasurers_get_money">
+    <%= form.label :get_money %>
+    <%= form.text_field :get_money %>
+  </div>
+  <%= form.submit %>
+<% end %>
