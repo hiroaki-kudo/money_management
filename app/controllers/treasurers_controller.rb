@@ -1,5 +1,6 @@
 class TreasurersController < ApplicationController
   before_action :set_treasurer, only:[:show, :edit, :update, :destroy]
+  # skip_before_action :login_required, only: [:index, :confirm, :new, :create]
   def index
     @treasurers = Treasurer.all
   end
