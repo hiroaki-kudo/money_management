@@ -6,6 +6,8 @@ class User < ApplicationRecord
   validates :parent_or_child, presence: true
   before_validation { email.downcase! }
 
+  # enum parent_or_child: {親:1, 子供:2}
+
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 end
