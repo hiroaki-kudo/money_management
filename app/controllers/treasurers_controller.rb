@@ -1,6 +1,5 @@
 class TreasurersController < ApplicationController
   before_action :set_treasurer, only:[:show, :edit, :update, :destroy]
-  # skip_before_action :login_required, only: [:index, :confirm, :new, :create]
   def index
     @treasurers = Treasurer.all
   end
@@ -8,7 +7,7 @@ class TreasurersController < ApplicationController
     @treasurer = Treasurer.new
   end
   def create
-    @treasurer = Treasurer.new(treasurer_params)
+    @treasurer = current_user.treasurers.build(treasurer_params)
     if params[:back]
       render :new
     else
@@ -20,7 +19,7 @@ class TreasurersController < ApplicationController
     end
   end
   def confirm
-    @treasurer = Treasurer.new(treasurer_params)
+    @treasurer = current_user.treasurers.build(treasurer_params)
     render :new if @treasurer.invalid?
   end
   def show
