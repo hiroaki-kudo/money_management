@@ -23,6 +23,7 @@ class TreasurersController < ApplicationController
     render :new if @treasurer.invalid?
   end
   def show
+    @favorite = current_user.favorites.find_by(treasurer_id: @treasurer.id)
   end
   def edit
   end
