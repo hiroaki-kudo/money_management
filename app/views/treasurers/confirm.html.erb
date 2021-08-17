@@ -1,0 +1,15 @@
+<h3>以下の内容で、送信する。</h3>
+<%= form_with(model: @treasurer, url: treasurers_path, local: true) do |form| %>
+  <%= form.hidden_field :use_date_at %>
+  <%= form.hidden_field :category_id %>
+  <%= form.hidden_field :use_what %>
+  <%= form.hidden_field :use_money %>
+  <%= form.hidden_field :get_money %>
+  <p>日付:<%= @treasurer.use_date_at %></p>
+  <p>カテゴリ:<%= @treasurer.category.name %></p>
+  <p>使った物:<%= @treasurer.use_what %></p>
+  <p>使用金額:<%= @treasurer.use_money %></p>
+  <p>収入金額:<%= @treasurer.get_money %></p>
+  <%= form.submit  "登録する" %>
+  <%= form.submit "戻る", name: 'back' %>
+<% end %>

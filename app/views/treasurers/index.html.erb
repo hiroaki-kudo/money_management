@@ -1,0 +1,25 @@
+<h1>出納一覧</h1>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th>日付</th>
+    <th>カテゴリ</th>
+    <th>使った物</th>
+    <th>使用金額</th>
+    <th>収入金額</th>
+  </tr>
+<% @treasurers.each do |treasurer| %>
+  <tr>
+    <td><%= Date.today %></td>
+    <td><%= treasurer.category.name %></td>
+    <td><%= treasurer.use_what %></td>
+    <td><%= treasurer.use_money %></td>
+    <td><%= treasurer.get_money %></td>
+    <td><%= link_to '詳細', treasurer_path(treasurer.id) %></td>
+    <td><%= link_to '編集', edit_treasurer_path(treasurer.id), data: { confirm: '本当に編集していいですか？' } %></td>
+    <td><%= link_to '削除', treasurer_path(treasurer.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '出納情報登録', new_treasurer_path %>
