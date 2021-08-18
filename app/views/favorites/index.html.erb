@@ -10,7 +10,7 @@
   </tr>
 <% @favorites.each do |favorite| %>
   <tr>
-    <td><%= Date.today %></td>
+    <td><%= favorite.use_date_at %></td>
     <td><%= favorite.category.name %></td>
     <td><%= favorite.use_what %></td>
     <td><%= favorite.use_money %></td>
