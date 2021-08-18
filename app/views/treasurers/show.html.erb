@@ -1,8 +1,25 @@
 <h1>出納詳細画面</h1>
-<p>カテゴリ: <%= @treasurer.category.name %></p>
-<p>使ったもの: <%= @treasurer.use_what %></p>
-<p>使用金額: <%= @treasurer.use_money %></p>
-<p>収入金額: <%= @treasurer.get_money %></p>
+
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="treasurer-text">
+    <p>カテゴリ: <%= @treasurer.category.name %></p>
+    <p>使ったもの: <%= @treasurer.use_what %></p>
+    <p>使用金額: <%= @treasurer.use_money %></p>
+    <p>収入金額: <%= @treasurer.get_money %></p>
+  </div>
+
+  <p>コメント一覧（ここから下の内容が重要）</p>
+  <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
+  <div id="comments_area">
+    <!-- 投稿されたコメント一覧をブログの詳細ページに表示するためのrender -->
+    <%= render partial: 'comments/index', locals: { comments: @comments, treasurer: @treasurer } %>
+  </div>
+  <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
+  <%= render partial: 'comments/form', locals: { comment: @comment, treasurer: @treasurer } %>
+  <%= link_to '編集', edit_treasurer_path(@treasurer) %> |
+  <%= link_to '戻る', treasurers_path %>
+</div>
 
 <%= link_to '出納一覧画面へ', treasurers_path %>
 

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       post :confirm
     end
+    resources :comments
   end
 
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]

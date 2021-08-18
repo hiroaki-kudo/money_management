@@ -24,6 +24,8 @@ class TreasurersController < ApplicationController
   end
   def show
     @favorite = current_user.favorites.find_by(treasurer_id: @treasurer.id)
+    @comments = @treasurer.comments
+    @comment = @treasurer.comments.build
   end
   def edit
   end
