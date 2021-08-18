@@ -4,6 +4,8 @@
 <p>使用金額: <%= @treasurer.use_money %></p>
 <p>収入金額: <%= @treasurer.get_money %></p>
 
+<%= link_to '出納一覧画面へ', treasurers_path %>
+
 <% if @treasurer.user_id == current_user.id %>
   <% if @favorite.present? %>
     <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
