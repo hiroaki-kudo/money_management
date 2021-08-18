@@ -1,7 +1,7 @@
 class TreasurersController < ApplicationController
   before_action :set_treasurer, only:[:show, :edit, :update, :destroy]
   def index
-    @treasurers = Treasurer.all
+    @treasurers = current_user.treasurers.all
   end
   def new
     @treasurer = Treasurer.new
