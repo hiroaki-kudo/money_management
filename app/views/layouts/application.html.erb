@@ -16,9 +16,12 @@
     <% if logged_in? %>
       <%= link_to "Profile", user_path(current_user.id) %>
       <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+      <p> <%= current_user.name %>ログイン中 </p>
     <% else %>
       <%= link_to "Sign up", new_user_path %>
       <%= link_to "Login", new_session_path %>
+      <%= link_to "ゲストログイン", guest_login_path, method: :post %>
+      <%= link_to "管理者ゲストログイン", admin_guest_login_path, method: :post %>
     <% end %>
     <%= yield %>
   </body>

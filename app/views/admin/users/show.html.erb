@@ -1,0 +1,27 @@
+<h1><%= @user.name %>のページ</h1>
+<p>メールアドレス: <%= @user.email %></p>
+
+<p>
+  <table>
+    <tr>
+      <th>日付</th>
+      <th>カテゴリ</th>
+      <th>使った物</th>
+      <th>使用金額</th>
+      <th>収入金額</th>
+    </tr>
+    <% @treasurers.each do |treasurer| %>
+      <tr>
+        <td><%= Date.today %></td>
+        <td><%= treasurer.category.name %></td>
+        <td><%= treasurer.use_what %></td>
+        <td><%= treasurer.use_money %></td>
+        <td><%= treasurer.get_money %></td>
+      </tr>
+    <% end %>
+  </table>
+<p>
+
+<%= link_to '出納情報一覧', treasurers_path %>
+<%= link_to 'ユーザ情報編集', edit_user_path(@user.id) %>
+<%= link_to '削除', user_path(@user.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %>
