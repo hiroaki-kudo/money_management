@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
     resources :comments
   end
-
+root 'top#index'
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
   post 'guest_login', to: "guest_sessions#create"
@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
   end
+
 end

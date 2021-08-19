@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :login_required
   private
   def login_required
-    redirect_to new_session_path unless current_user
+    redirect_to root_path unless current_user
   end
   def log_in(user)
       session[:user_id] = user.id
