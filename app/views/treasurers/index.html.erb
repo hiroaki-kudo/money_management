@@ -25,3 +25,10 @@
 <%= link_to '出納情報登録', new_treasurer_path %>
 <%= link_to 'お気に入り一覧画面へ', favorites_path %>
 <%= link_to 'ユーザ詳細ページへ', user_path(current_user.id) %>
+<p>
+<%= pie_chart(@chart) %>
+
+<%= @h %>
+<%= pie_chart(@h) %>
+<p>
+<%= @p %>

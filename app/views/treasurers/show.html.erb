@@ -21,6 +21,8 @@
   <%= link_to '戻る', treasurers_path %>
 </div>
 
+<%= pie_chart(@h) %>
+
 <%= link_to '出納一覧画面へ', treasurers_path %>
 
 <% if @treasurer.user_id == current_user.id %>
