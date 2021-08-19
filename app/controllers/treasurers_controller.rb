@@ -3,11 +3,11 @@ class TreasurersController < ApplicationController
   def index
     @treasurers = current_user.treasurers.all
     @chart = {"食べ物・飲み物" => 10, "電車・バス" => 20, "学校で使う道具" => 30, "もらったお金" => 40, "その他" => 40}
-    # @u = current_user.treasurers.group(:use_money).count
-    @h = current_user.treasurers.all.group(:category_id).sum(:use_money)
 
-    # @p = current_user.treasurers.all.find_by(id: @treasurers.category_id)
-    # @r = current_user.treasurers.all.eager_load(:category).group(:'category.name').sum(:use_money)
+    @sum = current_user.treasurers.all.group(:category_id).sum(:use_money)
+    # @sum.each do |k,v|
+    #   @sum[k] = "あ"
+    # end
     # binding.irb
   end
   def new
@@ -33,7 +33,7 @@ class TreasurersController < ApplicationController
     @favorite = current_user.favorites.find_by(treasurer_id: @treasurer.id)
     @comments = @treasurer.comments
     @comment = @treasurer.comments.build
-    @h = current_user.treasurers.all.group(:category_id).sum(:use_money)
+    @sum = current_user.treasurers.all.group(:category_id).sum(:use_money)
   end
   def edit
   end
