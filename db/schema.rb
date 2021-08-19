@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_141107) do
+ActiveRecord::Schema.define(version: 2021_08_19_110150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 2021_08_18_141107) do
     t.datetime "updated_at", null: false
     t.index ["treasurer_id"], name: "index_favorites_on_treasurer_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "kids", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_kids_on_user_id"
   end
 
   create_table "treasurers", force: :cascade do |t|
@@ -58,5 +66,6 @@ ActiveRecord::Schema.define(version: 2021_08_18_141107) do
   add_foreign_key "comments", "treasurers"
   add_foreign_key "favorites", "treasurers"
   add_foreign_key "favorites", "users"
+  add_foreign_key "kids", "users"
   add_foreign_key "treasurers", "users"
 end
