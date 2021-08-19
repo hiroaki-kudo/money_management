@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   def new
     @user = User.new
+    @user.kids.build
   end
   def create
     @user = User.new(user_params)
@@ -31,7 +32,9 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :parent_or_child,
-                                 :password, :password_confirmation)
+                                 :password, :password_confirmation,
+                               kids_attributes: [:id,:name, :user_id])
+
   end
   def set_user
     @user = User.find(params[:id])
