@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_19_143632) do
+ActiveRecord::Schema.define(version: 2021_08_19_153125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 2021_08_19_143632) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_kids_on_user_id"
+  end
+
+  create_table "managements", force: :cascade do |t|
+    t.integer "pocket_money", default: 3000
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_managements_on_user_id"
   end
 
   create_table "parents", force: :cascade do |t|
@@ -78,6 +86,7 @@ ActiveRecord::Schema.define(version: 2021_08_19_143632) do
   add_foreign_key "favorites", "treasurers"
   add_foreign_key "favorites", "users"
   add_foreign_key "kids", "users"
+  add_foreign_key "managements", "users"
   add_foreign_key "parents", "users"
   add_foreign_key "treasurers", "users"
 end

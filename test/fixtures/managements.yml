@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pocket_money: 1
+  user: one
+  treasurer: one
+
+two:
+  pocket_money: 1
+  user: two
+  treasurer: two
