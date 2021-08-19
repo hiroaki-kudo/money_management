@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # belongs_to :kid
   has_many :kids
+  has_many :comments
   has_many :treasurers
   has_many :favorites, dependent: :destroy
   has_many :favorite_treasurers, through: :favorites, source: :treasurer
