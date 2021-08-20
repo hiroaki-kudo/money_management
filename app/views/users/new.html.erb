@@ -21,14 +21,5 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
 
-
-  <% @user.kids.each_with_index do |kids, index| %>
-    <%= f.fields_for :kids, kids do |t| %>
-        <p><%= t.label :子or親 %></p>
-        <%= f.select :parent_or_child, [["親", "親"], ["子供", "子供"]], include_blank: "もう一度選択して下さい" %>
-    <% end %>
-  <% end %>
-
-
   <%= f.submit "Create my account" %>
 <% end %>

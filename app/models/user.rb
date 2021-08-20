@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  # belongs_to :kid
-  has_one :kid
+
   has_many :comments
   has_many :treasurers
   has_many :favorites, dependent: :destroy
@@ -12,7 +11,6 @@ class User < ApplicationRecord
   before_validation { email.downcase! }
 
   # enum parent_or_child: {親:1, 子供:2}
-  accepts_nested_attributes_for :kid
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }

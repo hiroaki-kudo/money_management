@@ -34,28 +34,12 @@ ActiveRecord::Schema.define(version: 2021_08_19_154314) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "kids", force: :cascade do |t|
-    t.string "name"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_kids_on_user_id"
-  end
-
   create_table "managements", force: :cascade do |t|
     t.integer "pocket_money", default: 3000
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_managements_on_user_id"
-  end
-
-  create_table "parents", force: :cascade do |t|
-    t.string "name"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_parents_on_user_id"
   end
 
   create_table "treasurers", force: :cascade do |t|
@@ -87,9 +71,7 @@ ActiveRecord::Schema.define(version: 2021_08_19_154314) do
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "treasurers"
   add_foreign_key "favorites", "users"
-  add_foreign_key "kids", "users"
   add_foreign_key "managements", "users"
-  add_foreign_key "parents", "users"
   add_foreign_key "treasurers", "managements"
   add_foreign_key "treasurers", "users"
 end
