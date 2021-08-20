@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-
+  has_many :managements, foreign_key: :kid_id
+  has_many :managements, foreign_key: :parent_id
   has_many :comments
   has_many :treasurers
   has_many :favorites, dependent: :destroy
@@ -7,10 +8,11 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  # validates :parent_or_child, presence: true
+
   before_validation { email.downcase! }
 
   # enum parent_or_child: {親:1, 子供:2}
+  accepts_nested_attributes_for :managements, allow_destroy: true
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }

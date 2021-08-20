@@ -6,8 +6,9 @@ class UsersController < ApplicationController
   end
   def create
     @user = User.new(user_params)
+    # @management = Management.new
+    # @management.user_id = current_user.id
     # @user.kid_build
-    # @user.kids.build
     # @user = user.blogs.build(user_params)
     if @user.save
       redirect_to user_path(@user.id)
@@ -34,7 +35,7 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :parent_or_child,
-                                 :password, :password_confirmation)
+                                 :password, :password_confirmation )
 
   end
   def set_user

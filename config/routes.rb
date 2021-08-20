@@ -17,4 +17,6 @@ root 'top#index'
     resources :users
   end
 
+  resources :managements, only: [:new, :create]
+
 end
