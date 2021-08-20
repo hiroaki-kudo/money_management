@@ -39,3 +39,5 @@ gem 'bcrypt'
 
 gem "chartkick"
 gem 'chartable'
+
+gem 'pry-rails'

@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     end
   end
   def show
+    @kiddatas = Management.all
+  end
+  def showkid
+    
   end
   def edit
   end
@@ -32,7 +36,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :parent_or_child,
                                  :password, :password_confirmation )
-
   end
   def set_user
     @user = User.find(params[:id])
