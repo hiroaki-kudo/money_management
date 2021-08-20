@@ -15,6 +15,7 @@ class TreasurersController < ApplicationController
   end
   def create
     @treasurer = current_user.treasurers.build(treasurer_params)
+    # @treasurer.management_id = current_user.id
     if params[:back]
       render :new
     else
@@ -27,6 +28,7 @@ class TreasurersController < ApplicationController
   end
   def confirm
     @treasurer = current_user.treasurers.build(treasurer_params)
+    # @treasurer.management_id = current_user.id
     render :new if @treasurer.invalid?
   end
   def show

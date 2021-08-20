@@ -3,10 +3,12 @@ class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   def new
     @user = User.new
-    @user.kids.build
   end
   def create
     @user = User.new(user_params)
+    # @user.kid_build
+    # @user.kids.build
+    # @user = user.blogs.build(user_params)
     if @user.save
       redirect_to user_path(@user.id)
     else

@@ -1,4 +1,4 @@
 class Management < ApplicationRecord
   belongs_to :user
-  belongs_to :treasurer
+  # has_many :treasurers
 end
