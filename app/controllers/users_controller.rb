@@ -6,10 +6,6 @@ class UsersController < ApplicationController
   end
   def create
     @user = User.new(user_params)
-    # @management = Management.new
-    # @management.user_id = current_user.id
-    # @user.kid_build
-    # @user = user.blogs.build(user_params)
     if @user.save
       redirect_to user_path(@user.id)
     else

@@ -2,20 +2,15 @@ class TreasurersController < ApplicationController
   before_action :set_treasurer, only:[:show, :edit, :update, :destroy]
   def index
     @treasurers = current_user.treasurers.all
-    @chart = {"食べ物・飲み物" => 10, "電車・バス" => 20, "学校で使う道具" => 30, "もらったお金" => 40, "その他" => 40}
-
     @sum = current_user.treasurers.all.group(:category_id).sum(:use_money)
-    # @sum.each do |k,v|
-    #   @sum[k] = "あ"
-    # end
-    # binding.irb
   end
   def new
     @treasurer = Treasurer.new
   end
   def create
     @treasurer = current_user.treasurers.build(treasurer_params)
-    # @treasurer.management_id = current_user.id
+    @kid = Management.find_by(kid_id: current_user.id)
+    @treasurer.management_id = @kid.id
     if params[:back]
       render :new
     else
@@ -28,7 +23,8 @@ class TreasurersController < ApplicationController
   end
   def confirm
     @treasurer = current_user.treasurers.build(treasurer_params)
-    # @treasurer.management_id = current_user.id
+    @kid = Management.find_by(kid_id: current_user.id)
+    @treasurer.management_id = @kid.id
     render :new if @treasurer.invalid?
   end
   def show

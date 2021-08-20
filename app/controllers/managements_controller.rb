@@ -7,7 +7,6 @@ class ManagementsController < ApplicationController
     @kid = User.find_by(email: @management.email)
     @management.kid_id = @kid.id
     @management.parent_id = current_user.id
-    binding.irb
       if @management.save
         redirect_to treasurers_path, notice: "managementテーブルのkid_idに子供のidを入れました"
       else
