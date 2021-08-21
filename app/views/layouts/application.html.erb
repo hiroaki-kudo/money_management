@@ -13,12 +13,12 @@
     <header>
       <ul class="top_menu clearfix">
         <% if logged_in? %>
-          <li><%= link_to "Profile", user_path(current_user.id) %></li>
-          <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
+          <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
+          <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
           <li><%= current_user.name %>ログイン中</li>
         <% else %>
-          <li><%= link_to "Sign up", new_user_path %></li>
-          <li><%= link_to "Login", new_session_path %></li>
+          <li><%= link_to "アカウント作成", new_user_path %></li>
+          <li><%= link_to "ログイン", new_session_path %></li>
           <li><%= link_to "ゲストログイン", guest_login_path, method: :post %></li>
           <li><%= link_to "管理者ゲストログイン", admin_guest_login_path, method: :post %></li>
         <% end %>

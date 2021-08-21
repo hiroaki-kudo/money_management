@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1 {
+.login_title {
   position: absolute;
   height: 6rem;
   margin-bottom: 10px;
@@ -14,7 +14,7 @@ h1 {
 }
 
 
-.content2 {
+.login_content {
   position: absolute;
   margin-bottom: 10px;
   top: 40%;
@@ -33,7 +33,7 @@ h1 {
    color: #6091d3;/*文字色*/
 }
 
-.content2:after{
+.login_content:after{
     position: absolute;
     content: '';
     right: -7px;

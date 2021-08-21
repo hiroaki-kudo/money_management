@@ -2,11 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html {
-  position: relative;
-}
 
-.title {
+
+.top_title {
   position: absolute;
   height: 6rem;
   margin-bottom: 10px;
@@ -17,7 +15,7 @@ html {
   color: #6091d3;
 }
 
-.content {
+.top_content {
   position: absolute;
   margin-bottom: 10px;
   top: 50%;
@@ -36,7 +34,7 @@ html {
    color: #6091d3;/*文字色*/
 }
 
-.content:after{
+.top_content:after{
     position: absolute;
     content: '';
     right: -7px;
@@ -47,12 +45,12 @@ html {
     box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
 }
 
-.content p {
+.top_content p {
     margin: 0;
     padding: 0;
 }
 
-.chart {
+.top_chart {
   position: absolute;
   height: 6rem;
   margin-bottom: 10px;

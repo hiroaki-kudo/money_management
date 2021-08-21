@@ -1,6 +1,6 @@
-<h1>ログイン画面</h1>
+<h1 class="login_title">ログイン画面</h1>
 
-<div class="content2">
+<div class="login_content">
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
   <p id="space"><%= f.label :email %></p>
   <p><%= f.email_field :email %></p>
