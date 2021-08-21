@@ -1,4 +1,4 @@
-<h1>Sign up</h1>
+
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
@@ -9,16 +9,20 @@
     </ul>
   </div>
 <% end %>
+
+<h1 class="user_new_edit_title">アカウント登録</h1>
+<div class="user_new_edit_content">
 <%= form_with(model: [:admin, @user], local: true) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :parent_or_child %>
-  <%= f.select :parent_or_child, [["親", "親"], ["子供", "子供"]], include_blank: "選択して下さい" %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "Create my account" %>
+  <p id="space"><%= f.label :name %></p>
+  <p><%= f.text_field :name %></p>
+  <p id="space"><%= f.label :email %></p>
+  <p><%= f.email_field :email %></p>
+  <p id="space"><%= f.label :parent_or_child %></p>
+  <p><%= f.select :parent_or_child, {'親': 0, '子': 1}, include_blank: "選択して下さい" %></p>
+  <p id="space"><%= f.label :password %></p>
+  <p><%= f.password_field :password %></p>
+  <p id="space"><%= f.label :password_confirmation %></p>
+  <p><%= f.password_field :password_confirmation %></p>
+  <p id="space"><%= f.submit "Create my account" %></p>
 <% end %>
+</div>

@@ -1,8 +1,10 @@
-<h1><%= @user.name %>のページ</h1>
+
+<div class="user_admin_content">
+<h3><%= @user.name %>のページ</h3>
 <p>メールアドレス: <%= @user.email %></p>
 
-<p>
-  <table>
+
+  <table class="user_admin_show_task">
     <tr>
       <th>日付</th>
       <th>カテゴリ</th>
@@ -20,8 +22,11 @@
       </tr>
     <% end %>
   </table>
-<p>
 
-<%= link_to '出納情報一覧', treasurers_path %>
-<%= link_to 'ユーザ情報編集', edit_user_path(@user.id) %>
-<%= link_to '削除', user_path(@user.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %>
+</div>
+
+<div class="user_admin_content2">
+<p><%= link_to '出納情報一覧', treasurers_path %></p>
+<p><%= link_to 'ユーザ情報編集', edit_user_path(@user.id) %></p>
+<p><%= link_to '削除', user_path(@user.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></p>
+</div>
