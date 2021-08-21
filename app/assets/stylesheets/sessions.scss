@@ -1,3 +1,54 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1 {
+  position: absolute;
+  height: 6rem;
+  margin-bottom: 10px;
+  top: 25%;
+  left: 40%;
+  -webkit-transform : translateY(-50%);
+  transform : translateY(-50%);
+  color: #6091d3;
+}
+
+
+.content2 {
+  position: absolute;
+  margin-bottom: 10px;
+  top: 40%;
+  left: 40%;
+  -webkit-transform : translateY(-50%);
+  transform : translateY(-50%);
+
+   background: #fff0cd;
+   box-shadow: 0px 0px 0px 5px #fff0cd;
+   border: dashed 2px white;
+   padding: 0.2em 0.5em;
+   color: #454545;
+   padding: 0.5em 1em;
+   margin: 2em 0;
+   font-weight: bold;
+   color: #6091d3;/*文字色*/
+}
+
+.content2:after{
+    position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #ffdb88 #fff #ffdb88;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+#space {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+  margin-top: 0;
+}
