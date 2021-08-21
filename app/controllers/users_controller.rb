@@ -13,10 +13,10 @@ class UsersController < ApplicationController
     end
   end
   def show
-    @kiddatas = Management.all
+    
   end
   def showkid
-    
+
   end
   def edit
   end

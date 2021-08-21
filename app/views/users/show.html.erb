@@ -1,14 +1,7 @@
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
 
-<% @kiddatas.each do |kiddata| %>
-  <% if current_user.id == kiddata.parent_id %>
-    <tr>
-      <td><%= link_to "#{kiddata.kid_id}のマイページ", user_path(kiddata.kid_id) %></td>
-    </tr>
-    <p>
-  <% end %>
-<% end %>
+
 
 <p>
 <%= link_to '出納情報一覧', treasurers_path %>
