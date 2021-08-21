@@ -9,7 +9,7 @@
 <p><%= link_to 'ユーザ編集', edit_user_path(@user.id) %></p>
 <p><%= link_to 'ユーザ削除', user_path(@user.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></p>
 <% if current_user.parent_or_child == 1 %>
-  <p><%= link_to '出納情報一覧', treasurers_path %></p>
+  <p><%= link_to '使ったもの一覧', treasurers_path %></p>
 <% end %>
 
 <% if current_user.admin == true %>

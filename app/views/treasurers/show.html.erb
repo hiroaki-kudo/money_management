@@ -23,7 +23,7 @@
 
 <%= pie_chart(@sum) %>
 
-<%= link_to '出納一覧画面へ', treasurers_path %>
+<%= link_to '使ったもの一覧', treasurers_path %>
 
 <% if @treasurer.user_id == current_user.id %>
   <% if @favorite.present? %>
