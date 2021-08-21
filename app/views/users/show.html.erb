@@ -4,7 +4,9 @@
 
 
 <p>
-<%= link_to '出納情報一覧', treasurers_path %>
+<% if current_user.parent_or_child == 1 %>
+  <%= link_to '出納情報一覧', treasurers_path %>
+<% end %>
 <p>
 <%= link_to 'ユーザ情報編集', edit_user_path(@user.id) %>
 <p>
