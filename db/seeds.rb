@@ -16,11 +16,11 @@
                admin: "false"
                )
 
-management = Management.create!(pocket_money: 3000,
-                                email: "guest@guest.com",
-                                parent_id: User.third.id,
-                                kid_id: User.second.id
-                                )
+# management = Management.create!(pocket_money: 3000,
+#                                 email: "guest@guest.com",
+#                                 parent_id: User.third.id,
+#                                 kid_id: User.second.id
+#                                 )
 
    Treasurer.create!(use_date_at: "2025-07-01",
                      category_id: "2",
