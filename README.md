@@ -48,7 +48,7 @@ https://docs.google.com/spreadsheets/d/1uUp3BSe-X_zARMMl2ngKnlKMjEcAk6nwmXc6zUmM
 
 https://cacoo.com/diagrams/5j8ByDLOhSLW70Cb/202A7?reload_rt=1628643824047_0
 
-![ER図](https://user-images.githubusercontent.com/83793785/129132330-bb7920c8-a2cb-4c76-96b5-f6bac2c67969.png)
+![ER図](https://user-images.githubusercontent.com/83793785/130313414-df9ea85f-8272-4a5b-8e0a-0f70fba91eb0.png)
 
 ## 画面遷移図
 
