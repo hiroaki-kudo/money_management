@@ -1,5 +1,6 @@
       User.create!(name: "管理者ユーザ",
                email: "kanri@kanri.com",
+               parent_or_child: "0",
                password: "123qwe",
                admin: "true"
                )
