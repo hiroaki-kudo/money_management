@@ -1,0 +1,5 @@
+<% @users.each do |user| %>
+  <%= user.kid.name %>
+  <%= link_to '詳細ページを表示', user_path(user.kid.id) ,class: user.id %>
+  <%= link_to 'ユーザ削除', user_path(user.kid.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %>
+<% end %>

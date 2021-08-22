@@ -5,6 +5,26 @@
 </div>
 
 
+<table class="user_show_task">
+  <tr>
+    <th>日付</th>
+    <th>カテゴリ</th>
+    <th>使った物</th>
+    <th>使用金額</th>
+    <th>収入金額</th>
+  </tr>
+  <% @treasurers.each do |treasurer| %>
+    <tr>
+      <td><%= Date.today %></td>
+      <td><%= treasurer.category.name %></td>
+      <td><%= treasurer.use_what %></td>
+      <td><%= treasurer.use_money %></td>
+      <td><%= treasurer.get_money %></td>
+    </tr>
+  <% end %>
+</table>
+
+
 <div class="user_content2">
 <p><%= link_to 'ユーザ編集', edit_user_path(@user.id) %></p>
 <p><%= link_to 'ユーザ削除', user_path(@user.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></p>
@@ -15,6 +35,10 @@
 
 <% if current_user.admin == true %>
   <p><%= link_to "管理者画面へ", admin_users_path %><p>
+<% end %>
+
+<% if current_user.parent_or_child == 0 && current_user.admin == false %>
+  <p><%= link_to '子供一覧', users_path %></p>
 <% end %>
 
 <% if current_user.parent_or_child == 0 %>

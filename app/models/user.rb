@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :managements, foreign_key: :kid_id
+  has_many :managements, foreign_key: :kid_id, dependent: :destroy
   has_many :managements, foreign_key: :parent_id
   has_many :comments
   has_many :treasurers

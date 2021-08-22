@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only:[:show, :edit, :update, :destroy]
   skip_before_action :login_required, only: [:new, :create]
+  def index
+    @users = Management.where(parent_id: current_user.id)
+  end
   def new
     @user = User.new
   end
@@ -13,10 +16,15 @@ class UsersController < ApplicationController
     end
   end
   def show
-
+    @treasurers = User.find(params[:id]).treasurers
   end
   def showkid
-
+    # @users.each do |f|
+    #   @a = User.find_by(id: f.id)
+    # @users = User.all.includes(:treasurers)
+    # @user = User.find(params[:id])
+    # binding.pry
+    # @treasurers = User.find(params[:id]).treasurers
   end
   def edit
   end
