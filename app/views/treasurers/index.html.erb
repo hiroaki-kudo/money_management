@@ -1,5 +1,7 @@
-<h1>お金の流れの一覧</h1>
+<h1 class="treasurer_index_title">お金の流れの一覧</h1>
 <p><%= notice %></p>
+
+<div class="treasurer_index_content">
 <table>
   <tr>
     <th>日付</th>
@@ -22,11 +24,16 @@
 <% end %>
 </table>
 
+<br>
 <% if current_user.parent_or_child == 1 %>
   <%= link_to '使った物などを登録', new_treasurer_path %>
 <% end %>
 
 <%= link_to 'お気に入り一覧画面へ', favorites_path %>
 <%= link_to 'ユーザ詳細ページへ', user_path(current_user.id) %>
+</div>
 <p>
-<%= pie_chart(@sum) %>
+
+<div class="treasurer_chart">
+  <%= pie_chart(@sum) %>
+</div>

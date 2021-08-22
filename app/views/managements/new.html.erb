@@ -1,4 +1,6 @@
-<h1>kid email input</h1>
+
+
+<%= form_with(model: @management, local: true) do |f| %>
 <% if @management.errors.any? %>
   <div id="error_explanation">
     <h2><%= @management.errors.count %>件のエラーがあります。</h2>
@@ -10,13 +12,13 @@
   </div>
 <% end %>
 
+<h1 class="management_title">子供のお小遣い設定画面</h1>
+<div class="management_content">
 
 
-
-<%= form_with(model: @management, local: true) do |f| %>
-
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+  <p><%= f.label :email %></p>
+  <p><%= f.text_field :email %></p>
 
   <%= f.submit "Create my account" %>
 <% end %>
+</div>

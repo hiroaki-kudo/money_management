@@ -21,8 +21,6 @@
   <%= link_to '戻る', treasurers_path %>
 </div>
 
-<%= pie_chart(@sum) %>
-
 <%= link_to '使ったもの一覧', treasurers_path %>
 
 <% if @treasurer.user_id == current_user.id %>
@@ -32,3 +30,5 @@
     <%= link_to 'お気に入りする', favorites_path(treasurer_id: @treasurer.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
 <% end %>
+
+<%= pie_chart(@sum) %>

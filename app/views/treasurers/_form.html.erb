@@ -9,25 +9,28 @@
       </ul>
     </div>
   <% end %>
+
+<div class="treasurer_new_edit_content">
   <div class="treasurers_use_date_at">
-    <%= form.label :use_date_at %>
-    <%= form.date_field :use_date_at %>
+    <p id="space"><%= form.label :use_date_at %></p>
+    <p><%= form.date_field :use_date_at %></p>
   </div>
   <div class="treasurers_category_id">
-    <%= form.label :category_id %>
-    <%= form.collection_select(:category_id, Category.all, :id, :name, {}) %>
+    <p id="space"><%= form.label :category_id %></p>
+    <p><%= form.collection_select(:category_id, Category.all, :id, :name, {}) %></p>
   </div>
   <div class="treasurers_use_what">
-    <%= form.label :use_what %>
-    <%= form.text_field :use_what %>
+    <p id="space"><%= form.label :use_what %></p>
+    <p><%= form.text_field :use_what %></p>
   </div>
   <div class="treasurers_use_money">
-    <%= form.label :use_money %>
-    <%= form.text_field :use_money %>
+    <p id="space"><%= form.label :use_money %></p>
+    <p><%= form.text_field :use_money %></p>
   </div>
   <div class="treasurers_get_money">
-    <%= form.label :get_money %>
-    <%= form.text_field :get_money %>
+    <p id="space"><%= form.label :get_money %></p>
+    <p><%= form.text_field :get_money %></p>
   </div>
   <%= form.submit %>
+</div>
 <% end %>

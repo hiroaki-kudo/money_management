@@ -1,4 +1,6 @@
-<h3>以下の内容で、送信する。</h3>
+<h2 class="treasurer_confirm_title">以下の内容で、送信する。</h2>
+
+<div class="treasurer_confirm_content">
 <%= form_with(model: @treasurer, url: treasurers_path, local: true) do |form| %>
   <%= form.hidden_field :use_date_at %>
   <%= form.hidden_field :category_id %>
@@ -13,3 +15,4 @@
   <%= form.submit  "登録する" %>
   <%= form.submit "戻る", name: 'back' %>
 <% end %>
+</div>
