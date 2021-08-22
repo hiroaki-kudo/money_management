@@ -16,7 +16,7 @@ class ManagementsController < ApplicationController
       @management.save
       redirect_to user_path(current_user.id), notice: "managementテーブルのkid_idに子供のidを入れました"
     else
-      render :new
+      render :new, notice: "子供のメールアドレスを入力してください"
     end
   end
   private

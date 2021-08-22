@@ -1,0 +1,2 @@
+module ParentGuestSessionsHelper
+end

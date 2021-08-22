@@ -15,6 +15,7 @@ root 'top#index'
   end
   resources :sessions, only: [:new, :create, :destroy]
   post 'guest_login', to: "guest_sessions#create"
+  post 'parent_guest_login', to: "parent_guest_sessions#create"
   post 'admin_guest_login', to: "admin_guest_sessions#create"
   resources :favorites, only: [:index, :create, :destroy]
   namespace :admin do
