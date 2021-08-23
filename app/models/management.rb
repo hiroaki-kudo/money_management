@@ -5,4 +5,10 @@ class Management < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 }, uniqueness: true,
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   before_validation { email.downcase! }
+
+
+  before_save :same_email_stop
+  def same_email_stop
+    throw(:abort) if email == "guest@guest.com"
+  end
 end

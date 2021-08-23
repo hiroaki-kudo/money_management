@@ -8,6 +8,7 @@ ja:
       parent: 親
       treasurer: 出納
       user: ユーザ
+      management: マネジメント
     attributes:
       comment:
         content: 内容
@@ -28,3 +29,6 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
+      management:
+        kid: 自分の子供
+        email: メールアドレス

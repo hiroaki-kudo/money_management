@@ -37,10 +37,12 @@ ActiveRecord::Schema.define(version: 2021_08_23_022700) do
   create_table "managements", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "parent_id"
+    t.bigint "kid_id"
     t.string "email"
-    t.bigint "user_id"
     t.index ["email"], name: "index_managements_on_email", unique: true
-    t.index ["user_id"], name: "index_managements_on_user_id"
+    t.index ["kid_id"], name: "index_managements_on_kid_id"
+    t.index ["parent_id"], name: "index_managements_on_parent_id"
   end
 
   create_table "treasurers", force: :cascade do |t|
@@ -60,6 +62,7 @@ ActiveRecord::Schema.define(version: 2021_08_23_022700) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.integer "parent_or_child"
     t.string "password_digest"
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
@@ -71,7 +74,8 @@ ActiveRecord::Schema.define(version: 2021_08_23_022700) do
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "treasurers"
   add_foreign_key "favorites", "users"
-  add_foreign_key "managements", "users"
+  add_foreign_key "managements", "users", column: "kid_id"
+  add_foreign_key "managements", "users", column: "parent_id"
   add_foreign_key "treasurers", "managements"
   add_foreign_key "treasurers", "users"
 end
