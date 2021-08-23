@@ -11,6 +11,7 @@ class TreasurersController < ApplicationController
     @treasurer = current_user.treasurers.build(treasurer_params)
     @kid = Management.find_by(kid_id: current_user.id)
     @treasurer.management_id = @kid.id
+    binding.pry
     if params[:back]
       render :new
     else
@@ -23,10 +24,15 @@ class TreasurersController < ApplicationController
   end
   def confirm
     @treasurer = current_user.treasurers.build(treasurer_params)
-    @kid = Management.find_by(kid_id: current_user.id)
-    @treasurer.management_id = @kid.id
+    unless Management.exists?(kid_id: current_user.id)
+      redirect_to treasurers_path, notice: "親子関係の登録をしてないので保存できませんでした"
+    else
+      @kid = Management.find_by(kid_id: current_user.id)
+      binding.pry
+      @treasurer.management_id = @kid.id
     render :new if @treasurer.invalid?
   end
+end
   def show
     @favorite = current_user.favorites.find_by(treasurer_id: @treasurer.id)
     @comments = @treasurer.comments
@@ -55,3 +61,17 @@ class TreasurersController < ApplicationController
     @treasurer = Treasurer.find(params[:id])
   end
 end
+
+
+# 変える前のコード
+# def confirm
+#     @treasurer = current_user.treasurers.build(treasurer_params)
+#     unless Management.exists?(kid_id: current_user.id)
+#       redirect_to treasurers_path, notice: "親子関係の登録をしてないので保存できませんでした"
+#     else
+#       @kid = Management.find_by(kid_id: current_user.id)
+#       binding.pry
+#       @treasurer.management_id = @kid.id
+#     render :new if @treasurer.invalid?
+#   end
+# end

@@ -19,8 +19,12 @@ class ManagementsController < ApplicationController
       @management.kid_id = @kid.id
       @management.parent_id = current_user.id
       @management.valid?
-      @management.save
-      redirect_to user_path(current_user.id), notice: "子供のお小遣いを設定しました"
+      if @management.save
+        redirect_to user_path(current_user.id), notice: "子供のお小遣いを設定しました"
+      else
+        binding.pry
+        redirect_to user_path(current_user.id), notice: "その方はすでに登録されています"
+      end
     else
       # @management.kid_id = current_user.id
       @management.parent_id = current_user.id
@@ -39,6 +43,13 @@ class ManagementsController < ApplicationController
   end
 
 end
+
+# 上口メンター
+# unless @management.save
+#     rredirect_to new, notice: "登録ずみです"
+# end
+
+
 
 
 # @management.parent_id = current_user.id
