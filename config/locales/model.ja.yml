@@ -30,5 +30,5 @@ ja:
         password_confirmation: 確認用パスワード
         remember_me: ログインを記憶
       management:
-        kid: 自分の子供
+        kid: 自分の子供のメールアドレス
         email: メールアドレス
