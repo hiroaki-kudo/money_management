@@ -17,8 +17,7 @@
                admin: "false"
                )
 
-management = Management.create!(pocket_money: 3000,
-                                email: "guest@guest.com",
+management = Management.create!(email: "guest@guest.com",
                                 parent_id: User.third.id,
                                 kid_id: User.second.id
                                 )
