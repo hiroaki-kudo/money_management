@@ -12,8 +12,8 @@ class Management < ApplicationRecord
 
   before_validation :same_email_stop
   def same_email_stop
-    # throw(:abort) if self.email == "guest@guest.com"
-    throw(:abort) if self.email == current_user.email
+    throw(:abort) if self.email == "guest@guest.com"
+    # throw(:abort) if self.email == current_user.email
     # errors.add(:same_email_stop,'登録できないよ')
     # puts "登録できませんでした"
   end

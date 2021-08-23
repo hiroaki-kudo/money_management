@@ -36,8 +36,16 @@ class UsersController < ApplicationController
     end
   end
   def destroy
+
+    @management = Management.where(kid_id: @user.id, parent_id: current_user.id)
+    # parent = current_user
+    # kid = @user
+    # binding.irb
+    @management.first.destroy
+
+
     @user.destroy
-    redirect_to new_user_path, notice:"ユーザ情報を削除しました！"
+    redirect_to users_path, notice:"ユーザ情報を削除しました！"
   end
 
   private
