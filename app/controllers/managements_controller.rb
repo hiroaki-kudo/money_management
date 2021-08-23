@@ -18,12 +18,11 @@ class ManagementsController < ApplicationController
       @kid = User.find_by(email: @management.email)
       @management.kid_id = @kid.id
       @management.parent_id = current_user.id
-      @management.valid?
+      # @management.valid?
       if @management.save
         redirect_to user_path(current_user.id), notice: "子供のお小遣いを設定しました"
       else
-        binding.pry
-        redirect_to user_path(current_user.id), notice: "その方はすでに登録されています"
+        render :new
       end
     else
       # @management.kid_id = current_user.id

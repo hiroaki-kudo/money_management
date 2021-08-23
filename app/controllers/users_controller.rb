@@ -27,6 +27,7 @@ class UsersController < ApplicationController
     # @treasurers = User.find(params[:id]).treasurers
   end
   def edit
+    redirect_to user_path(@user.id) and return if @user.parent_or_child == 1
   end
   def update
     if @user.update(user_params)
@@ -36,11 +37,8 @@ class UsersController < ApplicationController
     end
   end
   def destroy
-
+    redirect_to user_path(@user.id) and return if @user.parent_or_child == 1
     @management = Management.where(kid_id: @user.id, parent_id: current_user.id)
-    # parent = current_user
-    # kid = @user
-    # binding.irb
     @management.first.destroy
 
 

@@ -11,7 +11,7 @@ class TreasurersController < ApplicationController
     @treasurer = current_user.treasurers.build(treasurer_params)
     @kid = Management.find_by(kid_id: current_user.id)
     @treasurer.management_id = @kid.id
-    binding.pry
+    # binding.pry
     if params[:back]
       render :new
     else
@@ -28,7 +28,7 @@ class TreasurersController < ApplicationController
       redirect_to treasurers_path, notice: "親子関係の登録をしてないので保存できませんでした"
     else
       @kid = Management.find_by(kid_id: current_user.id)
-      binding.pry
+      # binding.pry
       @treasurer.management_id = @kid.id
     render :new if @treasurer.invalid?
   end
