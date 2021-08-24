@@ -1,5 +1,6 @@
 class TreasurersController < ApplicationController
   before_action :set_treasurer, only:[:show, :edit, :update, :destroy]
+  before_action :parent_and_child, only:[:show]
   def index
     @treasurers = current_user.treasurers.all
     @sum = current_user.treasurers.all.group(:category_id).sum(:use_money)
@@ -35,6 +36,7 @@ class TreasurersController < ApplicationController
   end
 end
   def show
+    # binding.irb
     @favorite = current_user.favorites.find_by(treasurer_id: @treasurer.id)
     @comments = @treasurer.comments
     @comment = @treasurer.comments.build
@@ -60,6 +62,9 @@ end
   end
   def set_treasurer
     @treasurer = Treasurer.find(params[:id])
+  end
+  def parent_and_child
+    @treasurer.user_id == current_user.id || current_user.id == Management.find_by(parent_id: current_user.id).parent_id
   end
 end
 

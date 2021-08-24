@@ -24,6 +24,7 @@
         <td><%= treasurer.use_what %></td>
         <td><%= treasurer.use_money %></td>
         <td><%= treasurer.get_money %></td>
+        <td><%= link_to '詳細', treasurer_path(treasurer.id) %></td>
       </tr>
     <% end %>
   </table>

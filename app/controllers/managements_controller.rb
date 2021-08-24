@@ -32,10 +32,12 @@ class ManagementsController < ApplicationController
       render :new, notice: "子供のメールアドレスを入力してください"
     end
   end
-  # def destroy
-  #   @management = Management.find(params[:id])
-  #   @management.destroy
-  # end
+  def destroy
+    redirect_to user_path(current_user.id) and return if current_user.parent_or_child == 1
+    @management = Management.where(kid_id: @user.id, parent_id: current_user.id)
+    @management.first.destroy
+    redirect_to users_path, notice:"親子関係を削除しました！"
+  end
   private
   def management_params
     params.require(:management).permit(:email)

@@ -3,8 +3,8 @@
   <p>子供が存在していれば子供一覧が表示されます</p>
   <% @users.each do |user| %>
     <%= user.kid.name %>
-    <%= link_to '詳細ページを表示', user_path(user.kid.id) ,class: user.id %>
+    <%= link_to 'ユーザ情報と使った物たちを表示', user_path(user.kid.id) ,class: user.id %>
     <%= link_to 'ユーザ編集', edit_user_path(user.kid.id) %>
-    <%= link_to 'ユーザ削除', user_path(user.kid.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %>
+    <%= link_to '親子関係の削除', management_path(user.kid.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %> <br>
   <% end %>
 </div>

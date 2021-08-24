@@ -38,7 +38,6 @@ class UsersController < ApplicationController
     @management = Management.where(kid_id: @user.id, parent_id: current_user.id)
     @management.first.destroy
 
-
     @user.destroy
     redirect_to users_path, notice:"ユーザ情報を削除しました！"
   end
