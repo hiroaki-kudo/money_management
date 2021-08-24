@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only:[:show, :edit, :update, :destroy]
   skip_before_action :login_required, only: [:new, :create]
-  # before_action :parent_and_child2, only: [:show]
+  before_action :child_and_parent, only: [:show]
   def index
     @users = Management.where(parent_id: current_user.id)
   end
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   end
   def show
     @treasurers = User.find(params[:id]).treasurers
+    # binding.irb
   end
   def showkid
   end
@@ -50,16 +51,22 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-
-  def parent_and_child2
-    if Management.find_by(parent_id: current_user.id).present?
-      binding.irb
-      unless
-        @user.id == current_user.id || current_user.id == Management.find_by(parent_id: current_user.id).parent_id
-        redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
-      end
-    else
+  def child_and_parent
+    unless child_or_parent?
       redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
     end
   end
 end
+
+
+# def parent_and_child2
+#   if Management.find_by(parent_id: current_user.id).present?
+#     binding.irb
+#     unless
+#       @user.id == current_user.id || current_user.id == Management.find_by(parent_id: current_user.id).parent_id
+#       redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
+#     end
+#   else
+#     redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
+#   end
+# end
