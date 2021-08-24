@@ -40,7 +40,11 @@ end
     @favorite = current_user.favorites.find_by(treasurer_id: @treasurer.id)
     @comments = @treasurer.comments
     @comment = @treasurer.comments.build
-    @sum = current_user.treasurers.all.group(:category_id).sum(:use_money)
+    if @treasurer.user_id == current_user.id
+      @sum = current_user.treasurers.all.group(:category_id).sum(:use_money)
+    else
+      @sum = User.find_by(id: @treasurer.user_id).treasurers.all.group(:category_id).sum(:use_money)
+    end
   end
   def edit
   end
