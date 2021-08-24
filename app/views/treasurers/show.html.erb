@@ -1,36 +1,38 @@
-<div class="treasurer_show_title">
-  <h2>使ったものなどの詳細な情報</h2>
-</div>
-<p id="notice"><%= notice %></p>
-<div class="treasurer_show_content">
-  <div class="container">
-    <div class="treasurer-text">
-      <p>カテゴリ: <%= @treasurer.category.name %></p>
-      <p>使ったもの: <%= @treasurer.use_what %></p>
-      <p>使用金額: <%= @treasurer.use_money %></p>
-      <p>収入金額: <%= @treasurer.get_money %></p>
+<div class="treasurer_show_wapper">
+  <div class="treasurer_show_title">
+    <h1>使ったものなどの詳細な情報</h1>
+  </div>
+  <div class="treasurer_show_content0">
+    <div class="treasurer_show_content">
+      <div class="treasurer_show_content2">
+        <div>
+          <p>カテゴリ: <%= @treasurer.category.name %></p>
+          <p>使ったもの: <%= @treasurer.use_what %></p>
+          <p>使用金額: <%= @treasurer.use_money %></p>
+          <p>収入金額: <%= @treasurer.get_money %></p>
+        </div>
+        <%= link_to '使ったもの一覧', treasurers_path %>
+        <% if @treasurer.user_id == current_user.id %>
+          <% if @favorite.present? %>
+            <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+          <% else %>
+            <%= link_to 'お気に入りする', favorites_path(treasurer_id: @treasurer.id), method: :post, class: 'btn btn-primary' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="treasurer_show_comment_content">
+      <div class="treasurer_show_comment_content2">
+        <p>コメント一覧</p>
+        <div id="comments_area">
+          <%= render partial: 'comments/index', locals: { comments: @comments, treasurer: @treasurer } %>
+        </div>
+        <%= render partial: 'comments/form', locals: { comment: @comment, treasurer: @treasurer } %>
+      </div>
+    </div>
+
+    <div class="treasurer_show_chart">
+      <%= pie_chart(@sum) %>
     </div>
   </div>
-  <%= link_to '使ったもの一覧', treasurers_path %>
-  <% if @treasurer.user_id == current_user.id %>
-    <% if @favorite.present? %>
-      <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-    <% else %>
-      <%= link_to 'お気に入りする', favorites_path(treasurer_id: @treasurer.id), method: :post, class: 'btn btn-primary' %>
-    <% end %>
-  <% end %>
-</div>
-
-<div class="treasurer_show_comment_content">
-  <p>コメント一覧</p>
-  <div id="comments_area">
-    <%= render partial: 'comments/index', locals: { comments: @comments, treasurer: @treasurer } %>
-  </div>
-  <%= render partial: 'comments/form', locals: { comment: @comment, treasurer: @treasurer } %>
-  <%= link_to '編集', edit_treasurer_path(@treasurer) %> |
-  <%= link_to '戻る', treasurers_path %>
-</div>
-
-<div class="treasurer_show_chart">
-  <%= pie_chart(@sum) %>
 </div>
