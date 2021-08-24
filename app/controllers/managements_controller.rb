@@ -5,15 +5,6 @@ class ManagementsController < ApplicationController
   end
   def create
     @management = Management.new(management_params)
-
-    # binding.pry
-    # Management.email.include?(@management.email)
-
-    # if @management.valid?
-     # @kid = User.find_by(email: @management.email)
-     # @management.kid_id = @kid.id
-     # @management.parent_id = current_user.id
-   # end
     if User.find_by(email: @management.email).present?
       @kid = User.find_by(email: @management.email)
       @management.kid_id = @kid.id
@@ -44,14 +35,6 @@ class ManagementsController < ApplicationController
   end
 
 end
-
-# 上口メンター
-# unless @management.save
-#     rredirect_to new, notice: "登録ずみです"
-# end
-
-
-
 
 # @management.parent_id = current_user.id
 # unless @management.kid_id = User.find_by(email: @management.email).id
