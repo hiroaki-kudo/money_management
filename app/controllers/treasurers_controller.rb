@@ -3,6 +3,7 @@ class TreasurersController < ApplicationController
   def index
     @treasurers = current_user.treasurers.all
     @sum = current_user.treasurers.all.group(:category_id).sum(:use_money)
+
   end
   def new
     @treasurer = Treasurer.new
