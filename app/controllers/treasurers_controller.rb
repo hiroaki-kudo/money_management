@@ -16,7 +16,7 @@ class TreasurersController < ApplicationController
       render :new
     else
       if @treasurer.save
-        redirect_to treasurers_path, notice: "出納情報を保存しました！"
+        redirect_to treasurers_path, notice: "お金の流れ情報を保存しました！"
       else
         render :new
       end
@@ -46,14 +46,14 @@ class TreasurersController < ApplicationController
   end
   def update
     if @treasurer.update(treasurer_params)
-      redirect_to treasurers_path, notice: "出納情報を訂正しました！"
+      redirect_to treasurers_path, notice: "お金の流れ情報を訂正しました！"
     else
       render :edit
     end
   end
   def destroy
     @treasurer.destroy
-    redirect_to treasurers_path, notice:"出納情報を削除しました！"
+    redirect_to treasurers_path, notice:"お金の流れ情報を削除しました！"
   end
 
   private

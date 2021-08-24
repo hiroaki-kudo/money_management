@@ -18,9 +18,6 @@ class UsersController < ApplicationController
   end
   def show
     @treasurers = User.find(params[:id]).treasurers
-    # binding.irb
-  end
-  def showkid
   end
   def edit
     redirect_to user_path(current_user.id) and return if current_user.parent_or_child == 1

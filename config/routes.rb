@@ -8,11 +8,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 root 'top#index'
-  resources :users do
-    collection do
-      get :showkid
-    end
-  end
+  resources :users
   resources :sessions, only: [:new, :create, :destroy]
   post 'guest_login', to: "guest_sessions#create"
   post 'parent_guest_login', to: "parent_guest_sessions#create"
