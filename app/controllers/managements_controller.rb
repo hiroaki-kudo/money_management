@@ -33,8 +33,10 @@ class ManagementsController < ApplicationController
   end
   def destroy
     redirect_to user_path(current_user.id) and return if current_user.parent_or_child == 1
-    @management = Management.where(kid_id: @user.id, parent_id: current_user.id)
-    @management.first.destroy
+    @management = Management.find_by(parent_id: current_user.id)
+    # @management = Management.where(kid_id: @user.id, parent_id: current_user.id)
+    binding.irb
+    @management.destroy
     redirect_to users_path, notice:"親子関係を削除しました！"
   end
   private
