@@ -20,7 +20,7 @@ class ManagementsController < ApplicationController
       @management.parent_id = current_user.id
       # @management.valid?
       if @management.save
-        redirect_to user_path(current_user.id), notice: "子供のお小遣いを設定しました"
+        redirect_to user_path(current_user.id), notice: "親子関係を設定しました"
       else
         render :new
       end
@@ -32,10 +32,9 @@ class ManagementsController < ApplicationController
     end
   end
   def destroy
+    @user = User.find(params[:id])
     redirect_to user_path(current_user.id) and return if current_user.parent_or_child == 1
-    @management = Management.find_by(parent_id: current_user.id)
-    # @management = Management.where(kid_id: @user.id, parent_id: current_user.id)
-    binding.irb
+    @management = Management.find_by(kid_id: @user.id)
     @management.destroy
     redirect_to users_path, notice:"親子関係を削除しました！"
   end
