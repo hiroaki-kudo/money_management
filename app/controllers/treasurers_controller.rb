@@ -67,17 +67,13 @@ end
     @treasurer = Treasurer.find(params[:id])
   end
   def parent_and_child
-    if Management.find_by(parent_id: current_user.id).present? || Management.find_by(kid_id: current_user.id).kid_id
-      unless
-        @treasurer.user_id == current_user.id || current_user.id == Management.find_by(parent_id: current_user.id).parent_id
-        redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
-      end
-    else
+    unless parent_or_child?
       redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
     end
   end
 end
 
+ #
 
 # 変える前のコード
 # def confirm

@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
   def log_in(user)
       session[:user_id] = user.id
   end
+
+  def parent_or_child?
+    (@treasurer.management.parent_id == current_user.id && @treasurer.management.kid_id != current_user.id) || (@treasurer.management.parent_id != current_user.id && @treasurer.management.kid_id == current_user.id)
+  end
 end
