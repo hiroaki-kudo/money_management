@@ -1,22 +1,23 @@
-<h1>お気に入り出納一覧</h1>
-<p><%= notice %></p>
-<table>
-  <tr>
-    <th>日付</th>
-    <th>カテゴリ</th>
-    <th>使った物</th>
-    <th>使用金額</th>
-    <th>収入金額</th>
-  </tr>
-<% @favorites.each do |favorite| %>
-  <tr>
-    <td><%= Date.today %></td>
-    <td><%= favorite.category.name %></td>
-    <td><%= favorite.use_what %></td>
-    <td><%= favorite.use_money %></td>
-    <td><%= favorite.get_money %></td>
-  </tr>
-<% end %>
-</table>
-
-<%= link_to '出納一覧画面へ', treasurers_path %>
+<h1 class="favorite_index_title">お気に入りの一覧</h1>
+<div class="favorite_index_content">
+  <table>
+    <tr>
+      <th>日付</th>
+      <th>カテゴリ</th>
+      <th>使った物</th>
+      <th>使用金額</th>
+      <th>収入金額</th>
+    </tr>
+    <% @favorites.each do |favorite| %>
+      <tr>
+        <td><%= favorite.use_date_at %></td>
+        <td><%= favorite.category.name %></td>
+        <td><%= favorite.use_what %></td>
+        <td><%= favorite.use_money %></td>
+        <td><%= favorite.get_money %></td>
+      </tr>
+    <% end %>
+  </table>
+  <br>
+  <%= link_to '使ったもの一覧', treasurers_path %>
+</div>

@@ -1,18 +1,22 @@
 class TreasurersController < ApplicationController
   before_action :set_treasurer, only:[:show, :edit, :update, :destroy]
+  before_action :parent_and_child, only:[:show, :edit]
   def index
     @treasurers = current_user.treasurers.all
+    @sum = current_user.treasurers.all.group(:category_id).sum(:use_money)
   end
   def new
     @treasurer = Treasurer.new
   end
   def create
     @treasurer = current_user.treasurers.build(treasurer_params)
+    @kid = Management.find_by(kid_id: current_user.id)
+    @treasurer.management_id = @kid.id
     if params[:back]
       render :new
     else
       if @treasurer.save
-        redirect_to treasurers_path, notice: "出納情報を保存しました！"
+        redirect_to treasurers_path, notice: "お金の流れ情報を保存しました！"
       else
         render :new
       end
@@ -20,23 +24,36 @@ class TreasurersController < ApplicationController
   end
   def confirm
     @treasurer = current_user.treasurers.build(treasurer_params)
-    render :new if @treasurer.invalid?
+    unless Management.exists?(kid_id: current_user.id)
+      redirect_to treasurers_path, notice: "親子関係の登録をしてないので保存できませんでした"
+    else
+      @kid = Management.find_by(kid_id: current_user.id)
+      @treasurer.management_id = @kid.id
+      render :new if @treasurer.invalid?
+    end
   end
   def show
     @favorite = current_user.favorites.find_by(treasurer_id: @treasurer.id)
+    @comments = @treasurer.comments
+    @comment = @treasurer.comments.build
+    if @treasurer.user_id == current_user.id
+      @sum = current_user.treasurers.all.group(:category_id).sum(:use_money)
+    else
+      @sum = User.find_by(id: @treasurer.user_id).treasurers.all.group(:category_id).sum(:use_money)
+    end
   end
   def edit
   end
   def update
     if @treasurer.update(treasurer_params)
-      redirect_to treasurers_path, notice: "出納情報を訂正しました！"
+      redirect_to treasurers_path, notice: "お金の流れ情報を訂正しました！"
     else
       render :edit
     end
   end
   def destroy
     @treasurer.destroy
-    redirect_to treasurers_path, notice:"出納情報を削除しました！"
+    redirect_to treasurers_path, notice:"お金の流れ情報を削除しました！"
   end
 
   private
@@ -46,4 +63,23 @@ class TreasurersController < ApplicationController
   def set_treasurer
     @treasurer = Treasurer.find(params[:id])
   end
+  def parent_and_child
+    unless parent_or_child?
+      redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
+    end
+  end
 end
+
+
+# 変える前のコード
+# def confirm
+#     @treasurer = current_user.treasurers.build(treasurer_params)
+#     unless Management.exists?(kid_id: current_user.id)
+#       redirect_to treasurers_path, notice: "親子関係の登録をしてないので保存できませんでした"
+#     else
+#       @kid = Management.find_by(kid_id: current_user.id)
+#       binding.pry
+#       @treasurer.management_id = @kid.id
+#     render :new if @treasurer.invalid?
+#   end
+# end

@@ -1,3 +1,89 @@
 // Place all the styles related to the admin::users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user_admin_content h3 {
+  font-size: 140%;
+}
+
+.user_admin_content {
+  position: absolute;
+  margin-bottom: 10px;
+  top: 40%;
+  left: 32%;
+  -webkit-transform : translateY(-50%);
+  transform : translateY(-50%);
+
+  background: #fff0cd;
+  box-shadow: 0px 0px 0px 5px #fff0cd;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+  color: #454545;
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  color: #6091d3;/*文字色*/
+}
+
+.user_admin_content:after{
+    position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #ffdb88 #fff #ffdb88;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+
+.user_admin_content2 {
+  position: absolute;
+  margin-bottom: 10px;
+  top: 80%;
+  left: 5%;
+  -webkit-transform : translateY(-50%);
+  transform : translateY(-50%);
+}
+
+
+.admin_index_title {
+  position: absolute;
+  height: 6rem;
+  margin:0 auto;
+  top: 25%;
+  left: 40%;
+  -webkit-transform : translateY(-50%);
+  transform : translateY(-50%);
+  color: #6091d3;
+}
+
+
+.admin_index_content {
+  position: absolute;
+  margin-bottom: 10px;
+  top: 40%;
+  left: 32%;
+  -webkit-transform : translateY(-50%);
+  transform : translateY(-50%);
+
+   background: #fff0cd;
+   box-shadow: 0px 0px 0px 5px #fff0cd;
+   border: dashed 2px white;
+   padding: 0.2em 0.5em;
+   color: #454545;
+   padding: 0.5em 1em;
+   margin: 2em 0;
+   font-weight: bold;
+   color: #6091d3;/*文字色*/
+}
+
+.admin_index_content:after{
+    position: absolute;
+    content: '';
+    right: -7px;
+    top: -7px;
+    border-width: 0 15px 15px 0;
+    border-style: solid;
+    border-color: #ffdb88 #fff #ffdb88;
+    box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
+}

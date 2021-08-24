@@ -4,9 +4,17 @@ class ApplicationController < ActionController::Base
   before_action :login_required
   private
   def login_required
-    redirect_to new_session_path unless current_user
+    redirect_to root_path unless current_user
   end
   def log_in(user)
       session[:user_id] = user.id
+  end
+
+  def parent_or_child?
+    (@treasurer.management.parent_id == current_user.id && @treasurer.management.kid_id != current_user.id) || (@treasurer.management.parent_id != current_user.id && @treasurer.management.kid_id == current_user.id)
+  end
+  def child_or_parent?
+    @user.id == current_user.id || Management.find_by(parent_id: current_user.id).present?
+    # || (@user.management.parent_id != current_user.id && @user.management.kid_id == current_user.id)
   end
 end

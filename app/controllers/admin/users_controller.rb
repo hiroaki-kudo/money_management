@@ -44,7 +44,7 @@ class Admin::UsersController < ApplicationController
     @users = User.all
     if current_user.admin == false
       flash[:aleat] = '管理者以外はアクセスできません'
-      redirect_to treasurers_path
+      redirect_to user_path(current_user.id)
     else
       render action: "index"
     end

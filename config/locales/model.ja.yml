@@ -1,0 +1,34 @@
+ja:
+  activerecord:
+    models:
+      category: カテゴリ
+      comment: コメント
+      favorite: お気に入り
+      kid: 子供
+      parent: 親
+      treasurer: 出納
+      user: ユーザ
+      management: マネジメント
+    attributes:
+      comment:
+        content: 内容
+      kid:
+        name: 名前
+      parent:
+        name: 名前
+      treasurer:
+        use_date_at: 日付
+        use_what: 使ったもの
+        use_money: 使った金額
+        get_money: もらった金額
+      user:
+        name: 名前
+        email: メールアドレス
+        parent_or_child: 親or子
+        current_password: 現在のパスワード
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        remember_me: ログインを記憶
+      management:
+        kid: 自分の子供のメールアドレス
+        email: メールアドレス

@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only:[:show, :edit, :update, :destroy]
   skip_before_action :login_required, only: [:new, :create]
+  before_action :child_and_parent, only: [:show, :edit]
+  def index
+    @users = Management.where(parent_id: current_user.id)
+  end
   def new
     @user = User.new
   end
@@ -13,8 +17,12 @@ class UsersController < ApplicationController
     end
   end
   def show
+    @treasurers = User.find(params[:id]).treasurers
   end
   def edit
+    redirect_to user_path(current_user.id) and return if current_user.parent_or_child == 1
+    # redirect_to user_path(@user.id) and return if @user.parent_or_child == 1
+    # redirect_to user_path(@user.id) and return if current_user.parent_or_child == 1
   end
   def update
     if @user.update(user_params)
@@ -24,16 +32,38 @@ class UsersController < ApplicationController
     end
   end
   def destroy
-    @user.destroy
-    redirect_to new_user_path, notice:"ユーザ情報を削除しました！"
+    # redirect_to user_path(@user.id) and return if @user.parent_or_child == 1
+    # @management = Management.where(kid_id: @user.id, parent_id: current_user.id)
+    # @management.first.destroy
+    #
+    # @user.destroy
+    # redirect_to users_path, notice:"ユーザ情報を削除しました！"
   end
 
   private
   def user_params
     params.require(:user).permit(:name, :email, :parent_or_child,
-                                 :password, :password_confirmation)
+                                 :password, :password_confirmation )
   end
   def set_user
     @user = User.find(params[:id])
   end
+  def child_and_parent
+    unless child_or_parent?
+      redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
+    end
+  end
 end
+
+
+# def parent_and_child2
+#   if Management.find_by(parent_id: current_user.id).present?
+#     binding.irb
+#     unless
+#       @user.id == current_user.id || current_user.id == Management.find_by(parent_id: current_user.id).parent_id
+#       redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
+#     end
+#   else
+#     redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
+#   end
+# end

@@ -1,5 +1,6 @@
-<h2>管理画面のユーザー一覧画面</h2>
-<p><%= notice %></p>
+<h2 class="admin_index_title">管理画面のユーザー一覧画面</h2>
+
+<div class="admin_index_content">
     <table>
       <% @users.each do |user| %>
       <tr>
@@ -10,4 +11,6 @@
       </tr>
       <% end %>
     </table>
+<br>
 <%= link_to 'ユーザーの新規作成', new_admin_user_path %>
+</div>

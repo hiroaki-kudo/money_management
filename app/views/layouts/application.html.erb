@@ -10,19 +10,29 @@
   </head>
 
   <body>
+    <header>
+      <ul class="top_menu clearfix">
+        <% if logged_in? %>
+          <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
+          <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+          <li><%= link_to "管理者画面へ", admin_users_path %></li>
+          <li><%= current_user.name %>ログイン中</li>
+        <% else %>
+          <li><%= link_to "アカウント作成", new_user_path %></li>
+          <li><%= link_to "ログイン", new_session_path %></li>
+          <li><%= link_to "ゲストログイン(子)", guest_login_path, method: :post %></li>
+          <li><%= link_to "ゲストログイン(親)", parent_guest_login_path, method: :post %></li>
+          <li><%= link_to "管理者ゲストログイン", admin_guest_login_path, method: :post %></li>
+        <% end %>
+      </ul>
+    </header>
+    <div class="validation">
     <% flash.each do |key, value| %>
      <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
-    <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      <p> <%= current_user.name %>ログイン中 </p>
-    <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
-      <%= link_to "ゲストログイン", guest_login_path, method: :post %>
-      <%= link_to "管理者ゲストログイン", admin_guest_login_path, method: :post %>
-    <% end %>
+    </div>
     <%= yield %>
+    <footer>
+    </footer>
   </body>
 </html>
