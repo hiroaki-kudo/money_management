@@ -1,10 +1,9 @@
 class TreasurersController < ApplicationController
   before_action :set_treasurer, only:[:show, :edit, :update, :destroy]
-  before_action :parent_and_child, only:[:show]
+  before_action :parent_and_child, only:[:show, :edit]
   def index
     @treasurers = current_user.treasurers.all
     @sum = current_user.treasurers.all.group(:category_id).sum(:use_money)
-
   end
   def new
     @treasurer = Treasurer.new
@@ -13,7 +12,6 @@ class TreasurersController < ApplicationController
     @treasurer = current_user.treasurers.build(treasurer_params)
     @kid = Management.find_by(kid_id: current_user.id)
     @treasurer.management_id = @kid.id
-    # binding.pry
     if params[:back]
       render :new
     else
@@ -30,11 +28,10 @@ class TreasurersController < ApplicationController
       redirect_to treasurers_path, notice: "親子関係の登録をしてないので保存できませんでした"
     else
       @kid = Management.find_by(kid_id: current_user.id)
-      # binding.pry
       @treasurer.management_id = @kid.id
-    render :new if @treasurer.invalid?
+      render :new if @treasurer.invalid?
+    end
   end
-end
   def show
     @favorite = current_user.favorites.find_by(treasurer_id: @treasurer.id)
     @comments = @treasurer.comments
@@ -73,7 +70,6 @@ end
   end
 end
 
- #
 
 # 変える前のコード
 # def confirm

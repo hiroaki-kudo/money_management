@@ -1,14 +1,12 @@
-
 <div class="user_content">
   <h3><%= @user.name %>のページ</h3>
   <p>メールアドレス: <%= @user.email %></p>
 </div>
 
 <% if current_user.parent_or_child == 0 %>
-<div class="user_show_content2">
- 〜子供の使用項目は以下の通りです〜
-</div>
-
+  <div class="user_show_content2">
+   〜子供の使用項目は以下の通りです〜
+  </div>
   <table class="user_show_task">
     <tr>
       <th>日付</th>

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only:[:show, :edit, :update, :destroy]
   skip_before_action :login_required, only: [:new, :create]
-  before_action :child_and_parent, only: [:show]
+  before_action :child_and_parent, only: [:show, :edit]
   def index
     @users = Management.where(parent_id: current_user.id)
   end
