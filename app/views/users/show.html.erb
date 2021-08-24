@@ -1,7 +1,7 @@
 
 <div class="user_content">
-<h3><%= @user.name %>のページ</h3>
-<p>メールアドレス: <%= @user.email %></p>
+  <h3><%= @user.name %>のページ</h3>
+  <p>メールアドレス: <%= @user.email %></p>
 </div>
 
 <% if current_user.parent_or_child == 0 %>
@@ -19,7 +19,7 @@
     </tr>
     <% @treasurers.each do |treasurer| %>
       <tr>
-        <td><%= Date.today %></td>
+        <td><%= treasurer.use_date_at %></td>
         <td><%= treasurer.category.name %></td>
         <td><%= treasurer.use_what %></td>
         <td><%= treasurer.use_money %></td>
@@ -37,7 +37,6 @@
 
   <% if current_user.parent_or_child == 0 %>
     <p><%= link_to 'ユーザ編集', edit_user_path(@user.id) %></p>
-    <p><%= link_to 'ユーザ削除', user_path(@user.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></p>
   <% end %>
 
   <% if current_user.admin == true %>
@@ -45,10 +44,7 @@
   <% end %>
 
   <% if current_user.parent_or_child == 0 && current_user.admin == false %>
+    <p><%= link_to '親子関係の登録', new_management_path %><p>
     <p><%= link_to '子供一覧', users_path %></p>
-  <% end %>
-
-  <% if current_user.parent_or_child == 0 %>
-    <p><%= link_to 'マネジメントページ', new_management_path %><p>
   <% end %>
 </div>

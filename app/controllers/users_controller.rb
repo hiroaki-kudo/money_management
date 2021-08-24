@@ -19,10 +19,10 @@ class UsersController < ApplicationController
     @treasurers = User.find(params[:id]).treasurers
   end
   def showkid
-
   end
   def edit
-    redirect_to user_path(@user.id) and return if @user.parent_or_child == 1
+    redirect_to user_path(current_user.id) and return if current_user.parent_or_child == 1
+    # redirect_to user_path(@user.id) and return if @user.parent_or_child == 1
     # redirect_to user_path(@user.id) and return if current_user.parent_or_child == 1
   end
   def update
@@ -50,15 +50,4 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-
 end
-
-
-# def showkid
-  # @users.each do |f|
-  #   @a = User.find_by(id: f.id)
-  # @users = User.all.includes(:treasurers)
-  # @user = User.find(params[:id])
-  # binding.pry
-  # @treasurers = User.find(params[:id]).treasurers
-# end

@@ -25,7 +25,6 @@ class ManagementsController < ApplicationController
         render :new
       end
     else
-      # @management.kid_id = current_user.id
       @management.parent_id = current_user.id
       @management.valid?
       @management.kid_id = current_user.id
