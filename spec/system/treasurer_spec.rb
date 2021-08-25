@@ -407,24 +407,16 @@ RSpec.describe 'お金のメモ', type: :system do
         fill_in 'Email', with: 'oya@oya.com'
         fill_in 'Password', with: '123qwe'
         click_button 'commit'
-        click_on '使ったもの一覧'
-        click_on '使った物などを登録'
-        fill_in 'treasurer[use_date_at]', with: '002025-07-01'
-        select '②:食べ物・飲み物'
-        fill_in 'treasurer[use_what]', with: 'うまい棒'
-        fill_in 'treasurer[use_money]', with: 10
+        click_on '子供一覧'
+        find('#detail_0').click
+        find('#detail_0').click
+        fill_in 'comment[content]', with: 'お勉強がんばってね'
         click_button 'commit'
-        click_button 'commit'
-        expect(page).to have_content 'お金の流れの一覧'
-        expect(page).to have_content 'うまい棒'
-        find('#detail_2').click
-        fill_in 'comment[content]', with: 'おいしかった'
-        click_button 'commit'
-        expect(page).to have_content 'おいしかった'
+        expect(page).to have_content 'お勉強がんばってね'
         click_on 'コメント編集'
-        fill_in 'comment[content]', with: 'まずかった'
+        fill_in 'comment[content]', with: '珍しい物買ってきたわね'
         click_button 'commit'
-        expect(page).to have_content 'まずかった'
+        expect(page).to have_content '珍しい物買ってきたわね'
       end
     end
     context '親がコメントを削除した場合' do
@@ -433,22 +425,14 @@ RSpec.describe 'お金のメモ', type: :system do
         fill_in 'Email', with: 'oya@oya.com'
         fill_in 'Password', with: '123qwe'
         click_button 'commit'
-        click_on '使ったもの一覧'
-        click_on '使った物などを登録'
-        fill_in 'treasurer[use_date_at]', with: '002025-07-01'
-        select '②:食べ物・飲み物'
-        fill_in 'treasurer[use_what]', with: 'うまい棒'
-        fill_in 'treasurer[use_money]', with: 10
+        click_on '子供一覧'
+        find('#detail_0').click
+        find('#detail_0').click
+        fill_in 'comment[content]', with: 'お勉強がんばってね'
         click_button 'commit'
-        click_button 'commit'
-        expect(page).to have_content 'お金の流れの一覧'
-        expect(page).to have_content 'うまい棒'
-        find('#detail_2').click
-        fill_in 'comment[content]', with: 'おいしかった'
-        click_button 'commit'
-        expect(page).to have_content 'おいしかった'
+        expect(page).to have_content 'お勉強がんばってね'
         click_on 'コメント削除'
-        expect(page).not_to have_content 'おいしかった'
+        expect(page).not_to have_content 'お勉強がんばってね'
       end
     end
   end
