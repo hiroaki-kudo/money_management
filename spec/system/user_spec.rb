@@ -63,7 +63,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
         fill_in 'session[password]', with: '123qwe'
         click_on 'commit'
         expect(page).to have_content 'ログイン中'
-        expect(page).to have_content '子供'
+        expect(page).to have_content '子'
         expect(page).to have_content 'kodomo@kodomo.com'
       end
     end
@@ -100,15 +100,15 @@ describe 'ゲストログイン機能(子)' do
   context '親がゲストログインする場合' do
     it 'ゲストユーザーとしてログインできる' do
       visit root_path
-      click_on 'ゲストログイン()'
-      expect(page).to have_content 'ゲストユーザ(子)のページ'
+      click_on 'ゲストログイン(親)'
+      expect(page).to have_content 'ゲストユーザ(親)のページ'
     end
   end
-  context '子がゲストログインする場合' do
+  context '管理者がゲストログインする場合' do
     it 'ゲストユーザーとしてログインできる' do
       visit root_path
-      click_on 'ゲストログイン(子)'
-      expect(page).to have_content 'ゲストユーザ(子)のページ'
+      click_on '管理者ゲストログイン'
+      expect(page).to have_content '管理者ユーザのページ'
     end
   end
 end

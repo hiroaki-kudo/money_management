@@ -26,4 +26,10 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
     end
   end
+  def self.admin_guest
+    find_or_create_by!(email: 'kanri@kanri.com') do |user|
+      user.name = '管理者ユーザ'
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end
