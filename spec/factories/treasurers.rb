@@ -2,8 +2,8 @@ FactoryBot.define do
   factory :treasurer do
     use_date_at { '2021-07-01' }
     category_id { 2 }
-    use_what { 'うまい棒' }
-    use_money { 10 }
+    use_what { 'チョコ' }
+    use_money { 200 }
     get_money { 0 }
     # association :user ,factory: :third_user
     # association :management
