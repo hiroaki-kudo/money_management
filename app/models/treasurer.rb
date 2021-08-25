@@ -8,6 +8,7 @@ class Treasurer < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
 
-  validates :use_money, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
-  validates :get_money, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+  validates :use_money, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 99999}
+  validates :get_money, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 99999}
+
 end

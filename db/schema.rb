@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 2021_08_23_022700) do
     t.date "use_date_at"
     t.integer "category_id"
     t.string "use_what"
-    t.integer "use_money"
-    t.integer "get_money"
+    t.integer "use_money", default: 0
+    t.integer "get_money", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
