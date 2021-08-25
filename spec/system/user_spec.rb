@@ -44,15 +44,15 @@ RSpec.describe 'ユーザー管理機能', type: :system do
     end
   end
 
-  describe 'ゲストログイン機能(親)' do
-    context '親がゲストログインする場合' do
-      it 'ゲストユーザーとしてログインできる' do
-        visit root_path
-        click_on 'ゲストログイン(親)'
-        expect(page).to have_content 'ゲストログイン(親)'
-      end
-    end
-  end
+  # describe 'ゲストログイン機能(親)' do
+  #   context '親がゲストログインする場合' do
+  #     it 'ゲストユーザーとしてログインできる' do
+  #       visit root_path
+  #       click_on 'ゲストログイン(親)'
+  #       expect(page).to have_content 'ゲストログイン(親)'
+  #     end
+  #   end
+  # end
 end
 
 
