@@ -143,4 +143,13 @@ RSpec.describe User, type: :model do
       end
     end
   end
+  describe '遷移先のテスト' do
+    context 'ログインしてないユーザが使ったもの一覧に遷移しようとした場合' do
+      it 'トップ画面へ遷移する' do
+        visit root_path
+        click_on '使ったもの一覧'
+        expect(page).to have_content 'show money'
+      end
+    end
+  end
 end
