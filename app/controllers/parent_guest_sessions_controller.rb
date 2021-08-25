@@ -2,9 +2,9 @@ class ParentGuestSessionsController < ApplicationController
   skip_before_action :login_required
 
   def create
-    user = User.find_by(email: 'haha@haha.com')
+    user = User.parent_guest
     log_in(user)
+    redirect_to user_path(current_user.id)
     flash[:success] = 'ゲストユーザー(親)でログインしました'
-    redirect_to user_path(user.id)
   end
 end

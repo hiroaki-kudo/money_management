@@ -8,10 +8,10 @@
         <div>
           <p>カテゴリ: <%= @treasurer.category.name %></p>
           <p>使ったもの: <%= @treasurer.use_what %></p>
-          <p>使用金額: <%= @treasurer.use_money %></p>
-          <p>収入金額: <%= @treasurer.get_money %></p>
+          <p>使用金額: <%= @treasurer.use_money %>円</p>
+          <p>収入金額: <%= @treasurer.get_money %>円</p>
         </div>
-        <%= link_to '使ったもの一覧', treasurers_path %>
+        <%= link_to '使ったもの一覧', treasurers_path if current_user.parent_or_child == 1 %>
         <% if @treasurer.user_id == current_user.id %>
           <% if @favorite.present? %>
             <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
@@ -33,6 +33,15 @@
 
     <div class="treasurer_show_chart">
       <%= pie_chart(@sum) %>
+    </div>
+    <div class="treasurer_show_category">
+      <div class="treasurer_show_category2">
+        <p>カテゴリ</p>
+        <p>青|①:食べ物：飲み物</p>
+        <p>赤|②:交通</p>
+        <p>橙|③:学校で使うもの</p>
+        <p>緑|④:その他</p>
+      </div>
     </div>
   </div>
 </div>

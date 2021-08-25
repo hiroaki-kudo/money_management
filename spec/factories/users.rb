@@ -18,7 +18,7 @@ FactoryBot.define do
   end
 
   factory :third_user, class: User do
-    name { '子供' }
+    name { '子' }
     email { 'kodomo@kodomo.com' }
     parent_or_child { 1 }
     password { '123qwe' }

@@ -4,13 +4,13 @@
                password: "123qwe",
                admin: "true"
                )
-  user = User.create!(name: "ゲストユーザ(子供)",
+  user = User.create!(name: "ゲストユーザ(子)",
                 email: "guest@guest.com",
                 parent_or_child: "1",
                 password: "123qwe",
                 admin: "false"
                 )
-      User.create!(name: "ゲストユーザ(母親)",
+      User.create!(name: "ゲストユーザ(親)",
                email: "haha@haha.com",
                parent_or_child: "0",
                password: "123qwe",

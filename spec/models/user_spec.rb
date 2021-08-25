@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
     end
     context 'メールアドレスが256文字以上の場合' do
       it 'バリデーションエラーになる' do
-        second_user.name = 'oya@oya.com' * 26
+        second_user.email = 'oya@oya.com' * 26
         expect(second_user).to be_invalid
       end
     end
@@ -100,7 +100,7 @@ RSpec.describe User, type: :model do
     end
     context 'メールアドレスが256文字以上の場合' do
       it 'バリデーションエラーになる' do
-        third_user.name = 'kodomo@kodomo.com' * 26
+        third_user.email = 'kodomo@kodomo.com' * 26
         expect(third_user).to be_invalid
       end
     end

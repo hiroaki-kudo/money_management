@@ -5,15 +5,6 @@ FactoryBot.define do
     use_what { 'チョコ' }
     use_money { 200 }
     get_money { 0 }
-    # association :user ,factory: :third_user
-    # association :management
-
-    # trait :with_a_task_and_title_labels do
-    #   after(:build) do |task|
-    #    task.task_labels << FactoryBot.build(:task_labels, :with_labels)
-    #   end
-    # end
-
   end
 
   factory :second_treasurer, class: Treasurer do
@@ -22,9 +13,6 @@ FactoryBot.define do
     use_what { '消しゴム' }
     use_money { 100 }
     get_money { 0 }
-    # association :user ,factory: :third_user
-    # association :management
-
   end
 
   factory :third_treasurer, class: Treasurer do
@@ -33,7 +21,5 @@ FactoryBot.define do
     use_what { 'バス代' }
     use_money { 300 }
     get_money { 0 }
-    # association :user ,factory: :third_user
-    # association :management
   end
 end
