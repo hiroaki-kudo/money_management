@@ -40,8 +40,8 @@
           <td><%= treasurer.use_date_at %></td>
           <td><%= treasurer.category.name %></td>
           <td><%= treasurer.use_what %></td>
-          <td><%= treasurer.use_money %></td>
-          <td><%= treasurer.get_money %></td>
+          <td><%= treasurer.use_money %>円</td>
+          <td><%= treasurer.get_money %>円</td>
           <td><%= link_to '詳細', treasurer_path(treasurer.id), id: "detail_#{index}" %></td>
         </tr>
         <% index += 1 %>
