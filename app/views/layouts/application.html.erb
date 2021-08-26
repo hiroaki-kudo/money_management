@@ -15,7 +15,7 @@
         <% if logged_in? %>
           <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
           <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
-          <li><%= link_to "管理者画面へ", admin_users_path %></li>
+          <li><%= link_to "管理者画面へ", admin_users_path if current_user.admin == true %></li>
           <li><%= current_user.name %>ログイン中</li>
         <% else %>
           <li><%= link_to "アカウント作成", new_user_path %></li>
