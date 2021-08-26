@@ -1,53 +1,48 @@
- <!-- @user.parent_or_child == 0  -->
-  <!-- <div class="user_show_wappar2"> -->
- <!-- else  -->
-  <div class="user_show_wappar">
- <!-- end  -->
+
+<div class="user_show_wappar">
   <div class="user_show_title2">
     <div class="user_show_title">
       <h3><%= @user.name %>のページ</h3>
       <p>メールアドレス: <%= @user.email %></p>
 
       <p><%= link_to '使ったもの一覧', treasurers_path if current_user.parent_or_child == 1 %></p>
-      <p><%= link_to 'ユーザ編集', edit_user_path(@user.id) if current_user.parent_or_child == 0 %></p>
       <p><%= link_to '管理者画面へ', admin_users_path if current_user.admin == true %></p>
+      <p><%= link_to 'ユーザ編集', edit_user_path(@user.id) if current_user.parent_or_child == 0 %></p>
       <% if current_user.parent_or_child == 0 && current_user.admin == false %>
         <p><%= link_to '親子関係の登録', new_management_path %></p>
         <p><%= link_to '子供一覧', users_path %></p>
       <% end %>
     </div>
   </div>
-<!-- </div> -->
 
-<% if current_user.parent_or_child == 0 && current_user.admin == false %>
-  <div class="user_show_content2">
-    <div class="user_show_content3">
-     〜子供の使用項目は以下の通りです〜
+  <% if current_user.parent_or_child == 0 && current_user.admin == false %>
+    <div class="user_show_content2">
+      <div class="user_show_content3">
+       〜子供の使用項目は以下の通りです〜
+      </div>
     </div>
-  </div>
-  <div class="user_show_task2">
-    <table class="user_show_task">
-      <tr>
-        <th>日付</th>
-        <th>カテゴリ</th>
-        <th>使った物</th>
-        <th>使用金額</th>
-        <th>収入金額</th>
-      </tr>
-      <% index = 0 %>
-      <% @treasurers.each do |treasurer| %>
+    <div class="user_show_task2">
+      <table class="user_show_task">
         <tr>
-          <td><%= treasurer.use_date_at %></td>
-          <td><%= treasurer.category.name %></td>
-          <td><%= treasurer.use_what %></td>
-          <td><%= treasurer.use_money %>円</td>
-          <td><%= treasurer.get_money %>円</td>
-          <td><%= link_to '詳細', treasurer_path(treasurer.id), id: "detail_#{index}" %></td>
+          <th>日付</th>
+          <th>カテゴリ</th>
+          <th>使った物</th>
+          <th>使用金額</th>
+          <th>収入金額</th>
         </tr>
-        <% index += 1 %>
-      <% end %>
-    </table>
-  </div>
-  </div>
-
-<% end %>
+        <% index = 0 %>
+        <% @treasurers.each do |treasurer| %>
+          <tr>
+            <td><%= treasurer.use_date_at %></td>
+            <td><%= treasurer.category.name %></td>
+            <td><%= treasurer.use_what %></td>
+            <td><%= treasurer.use_money %>円</td>
+            <td><%= treasurer.get_money %>円</td>
+            <td><%= link_to '詳細', treasurer_path(treasurer.id), id: "detail_#{index}" %></td>
+          </tr>
+          <% index += 1 %>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+</div>
