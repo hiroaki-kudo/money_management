@@ -4,9 +4,7 @@
     <div class="user_show_title">
       <h3><%= @user.name %>のページ</h3>
       <p>メールアドレス: <%= @user.email %></p>
-
       <p><%= link_to '使ったもの一覧', treasurers_path if current_user.parent_or_child == 1 %></p>
-      <p><%= link_to '管理者画面へ', admin_users_path if current_user.admin == true %></p>
       <p><%= link_to 'ユーザ編集', edit_user_path(@user.id) if current_user.parent_or_child == 0 %></p>
       <% if current_user.parent_or_child == 0 && current_user.admin == false %>
         <p><%= link_to '親子関係の登録', new_management_path %></p>
