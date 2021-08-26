@@ -1,10 +1,14 @@
-<h1 class="login_title">ログイン画面</h1>
-<div class="login_content">
-  <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-    <p id="space"><%= f.label :email %></p>
-    <p><%= f.email_field :email %></p>
-    <p id="space"><%= f.label :password %></p>
-    <p><%= f.password_field :password %></p>
-    <p id="space"><%= f.submit "Log in" %></p>
-  <% end %>
+<div class="login_wapper">
+  <h1 class="login_title">ログイン画面</h1>
+  <div class="login_content">
+    <div class="login_content2">
+      <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+        <p><%= f.label :email %></p>
+        <p><%= f.email_field :email %></p>
+        <p><%= f.label :password %></p>
+        <p><%= f.password_field :password %></p>
+        <p><%= f.submit "ログイン", class: "submit_botton" %></p>
+      <% end %>
+    </div>
+  </div>
 </div>

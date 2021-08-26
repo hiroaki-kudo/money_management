@@ -1,10 +1,12 @@
 
 <div class="user_index_content">
   <p>子供が存在していれば子供一覧が表示されます</p>
+  <% index = 0 %>
   <% @users.each do |user| %>
     <%= user.kid.name %>
-    <%= link_to 'ユーザ情報と使った物たちを表示', user_path(user.kid.id) ,class: user.id %>
-    <%= link_to 'ユーザ編集', edit_user_path(user.kid.id) %>
-    <%= link_to '親子関係の削除', management_path(user.kid.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %> <br>
+    <%= link_to 'ユーザ情報と使った物たちを表示', user_path(user.kid.id) ,class: user.id, id: "detail_#{index}" %>
+    <%= link_to 'ユーザ編集', edit_user_path(user.kid.id), id: "edit_#{index}" %>
+    <%= link_to '親子関係の削除', management_path(user.kid.id), method: :delete, id: "delete_#{index}" %> <br>
+    <% index += 1 %>
   <% end %>
 </div>

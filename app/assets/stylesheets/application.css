@@ -22,7 +22,11 @@
 
 
  html {
-   min-height: 100%
+   /* min-height: 100% */
+   min-height: 100vh;
+    position: relative;/*←相対位置*/
+    padding-bottom: 120px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
  }
 
  body {
@@ -75,3 +79,11 @@
   border-bottom: solid 6px #1dc1d6;
   box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);/*影*/
 }
+
+/* .validation_mapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+} */

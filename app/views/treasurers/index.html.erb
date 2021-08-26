@@ -1,30 +1,35 @@
-<h1 class="treasurer_index_title">お金の流れの一覧</h1>
-
-<div class="treasurer_index_content">
-  <table>
-    <tr>
-      <th>日付</th>
-      <th>カテゴリ</th>
-      <th>使った物</th>
-      <th>使用金額</th>
-      <th>収入金額</th>
-    </tr>
-    <% @treasurers.each do |treasurer| %>
-      <tr>
-        <td><%= treasurer.use_date_at %></td>
-        <td><%= treasurer.category.name %></td>
-        <td><%= treasurer.use_what %></td>
-        <td><%= treasurer.use_money %></td>
-        <td><%= treasurer.get_money %></td>
-        <td><%= link_to '詳細', treasurer_path(treasurer.id) %></td>
-        <td><%= link_to '編集', edit_treasurer_path(treasurer.id), data: { confirm: '本当に編集していいですか？' } %></td>
-        <td><%= link_to '削除', treasurer_path(treasurer.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
-      </tr>
-    <% end %>
-  </table>
-  <br>
-  <% if current_user.parent_or_child == 1 %>
-    <%= link_to '使った物などを登録', new_treasurer_path %>
-  <% end %>
-  <%= link_to 'お気に入り一覧画面へ', favorites_path %>
+<div class="treasurer_wappar">
+  <h1 class="treasurer_index_title">お金の流れの一覧</h1>
+  <div class="treasurer_index_content">
+    <div class="treasurer_index_content2">
+      <table>
+        <tr>
+          <th>日付</th>
+          <th>カテゴリ</th>
+          <th>使った物</th>
+          <th>使用金額</th>
+          <th>収入金額</th>
+        </tr>
+        <% index = 0 %>
+        <% @treasurers.each do |treasurer| %>
+          <tr>
+            <td><%= treasurer.use_date_at %></td>
+            <td><%= treasurer.category.name %></td>
+            <td><%= treasurer.use_what %></td>
+            <td><%= treasurer.use_money %> 円</td>
+            <td><%= treasurer.get_money %> 円</td>
+            <td><%= link_to '詳細', treasurer_path(treasurer.id), id: "detail_#{index}" %></td>
+            <td><%= link_to '編集', edit_treasurer_path(treasurer.id), id: "edit_#{index}"  %></td>
+            <td><%= link_to '削除', treasurer_path(treasurer.id), method: :delete, id: "delete_#{index}" %></td>
+          </tr>
+          <% index += 1 %>
+        <% end %>
+      </table>
+      <br>
+      <% if current_user.parent_or_child == 1 %>
+        <%= link_to '使った物などを登録', new_treasurer_path %>
+      <% end %>
+      <%= link_to 'お気に入り一覧画面へ', favorites_path %>
+    </div>
+  </div>
 </div>
