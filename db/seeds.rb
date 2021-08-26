@@ -178,7 +178,7 @@ Comment.create!(content: "ワクワク",
 
 Comment.create!(content: "嬉しい",
                 treasurer_id: "4",
-                user_id: "3",
+                user_id: "3"
                 )
 
 Comment.create!(content: "バス大好き",
