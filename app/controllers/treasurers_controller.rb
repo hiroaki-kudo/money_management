@@ -1,6 +1,7 @@
 class TreasurersController < ApplicationController
   before_action :set_treasurer, only:[:show, :edit, :update, :destroy]
   before_action :parent_and_child, only:[:show, :edit]
+  before_action :set_parent, only:[:edit, :destroy]
   def index
     @treasurers = current_user.treasurers.all
     @sum = current_user.treasurers.all.group(:category_id).sum(:use_money)
@@ -46,14 +47,14 @@ class TreasurersController < ApplicationController
   end
   def update
     if @treasurer.update(treasurer_params)
-      redirect_to treasurers_path, notice: "お金の流れ情報を訂正しました！"
+      redirect_to user_path(@treasurer.management.kid_id), notice: "お金の流れ情報を訂正しました！"
     else
       render :edit
     end
   end
   def destroy
     @treasurer.destroy
-    redirect_to treasurers_path, notice:"お金の流れ情報を削除しました！"
+    redirect_to user_path((@treasurer.management.kid_id)), notice:"お金の流れ情報を削除しました！"
   end
 
   private
@@ -66,6 +67,12 @@ class TreasurersController < ApplicationController
   def parent_and_child
     unless parent_or_child?
       redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
+    end
+  end
+
+  def set_parent
+    if @treasurer.management.kid_id == current_user.id
+      redirect_to user_path(current_user.id), notice: "あなたはできないです。"
     end
   end
 end

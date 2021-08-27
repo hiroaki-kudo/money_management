@@ -18,7 +18,13 @@ class UsersController < ApplicationController
     end
   end
   def show
-    @treasurers = User.find(params[:id]).treasurers
+    @treasurers = User.find(params[:id]).treasurers #修正前
+    # @kidtreasurers = Treasurer.where(user_id: )
+    # binding.pry
+    # @users = Management.where(parent_id: current_user.id)
+
+    # @treasurers = Treasurer.where(parent_id: current_user.id)
+    # binding.pry
   end
   def edit
     redirect_to user_path(current_user.id) and return if current_user.parent_or_child == 1

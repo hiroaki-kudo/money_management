@@ -13,11 +13,17 @@
   </div>
 
   <% if current_user.parent_or_child == 0 && current_user.admin == false %>
-    <div class="user_show_content2">
+    <!-- <div class="user_show_content2">
       <div class="user_show_content3">
        〜子供の使用項目は以下の通りです〜
       </div>
-    </div>
+    </div> -->
+
+    <!--  < ＠kids = @user.treasurers %> %>
+    <!-- < @kids.each do |kid| > -->
+    <!-- < @users.each do |user| %>
+    <= user.kid.name %> -->
+
     <div class="user_show_task2">
       <table class="user_show_task">
         <tr>
@@ -36,10 +42,15 @@
             <td><%= treasurer.use_money %>円</td>
             <td><%= treasurer.get_money %>円</td>
             <td><%= link_to '詳細', treasurer_path(treasurer.id), id: "detail_#{index}" %></td>
+            <td><%= link_to '編集', edit_treasurer_path(treasurer.id), id: "edit_#{index}"  %></td>
+            <td><%= link_to '削除', treasurer_path(treasurer.id), method: :delete, id: "delete_#{index}" %></td>
           </tr>
           <% index += 1 %>
         <% end %>
       </table>
     </div>
-  <% end %>
+
+    <% end %>
+
+  <!-- < end %> -->
 </div>

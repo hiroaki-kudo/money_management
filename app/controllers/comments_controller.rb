@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
   end
   def edit
     @comment = @treasurer.comments.find(params[:id])
+    return redirect_to treasurer_path(@treasurer.id), notice: "他人の投稿は編集も削除もできません" unless @comment.user_id == current_user.id
     respond_to do |format|
       flash.now[:notice] = 'コメントの編集中'
       format.js { render :edit }
@@ -33,6 +34,7 @@ class CommentsController < ApplicationController
   end
   def destroy
     @comment = Comment.find(params[:id])
+    return redirect_to treasurer_path(@treasurer.id), notice: "他人の投稿は編集も削除もできません" unless @comment.user_id == current_user.id
     @comment.destroy
     respond_to do |format|
       flash.now[:notice] = 'コメントが削除されました'
