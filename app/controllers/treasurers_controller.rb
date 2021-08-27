@@ -54,7 +54,7 @@ class TreasurersController < ApplicationController
   end
   def destroy
     @treasurer.destroy
-    redirect_to user_path(current_user.id), notice:"お金の流れ情報を削除しました！"
+    redirect_to user_path((@treasurer.management.kid_id)), notice:"お金の流れ情報を削除しました！"
   end
 
   private
