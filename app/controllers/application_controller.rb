@@ -15,6 +15,9 @@ class ApplicationController < ActionController::Base
   end
   def child_or_parent?
     @user.id == current_user.id || Management.find_by(parent_id: current_user.id).present?
+
+    # (@user.id == current_user.id || Management.find_by(parent_id: current_user.id).present?) || current_user.admin == false
+
     # || (@user.management.parent_id != current_user.id && @user.management.kid_id == current_user.id)
   end
 end
