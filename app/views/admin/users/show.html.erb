@@ -1,12 +1,12 @@
-<div class="user_admin_wapper">
-  <div class="user_admin_title2">
-    <div class="user_admin_title">
+<div class="admin_show_wapper">
+  <div class="admin_show_title2">
+    <div class="admin_show_title">
       <h3><%= @user.name %>のページ</h3>
       <p>メールアドレス: <%= @user.email %></p>
     </div>
   </div>
-  <div class="user_admin_show_task2">
-    <div class="user_admin_show_task">
+  <div class="admin_show_task2">
+    <div class="admin_show_task">
       <table>
         <tr>
           <th>日付</th>
@@ -22,18 +22,21 @@
             <td><%= treasurer.use_what %></td>
             <td><%= treasurer.use_money %></td>
             <td><%= treasurer.get_money %></td>
+            <td><%= link_to '詳細', treasurer_path(treasurer.id) %></td>
+            <td><%= link_to '編集', edit_treasurer_path(treasurer.id) %></td>
+            <td><%= link_to '削除', treasurer_path(treasurer.id), method: :delete %></td>
           </tr>
         <% end %>
       </table>
     </div>
   </div>
-  <div class="user_admin_content2">
-    <div class="user_admin_content">
+  <div class="admin_show_content2">
+    <div class="admin_show_content">
       <% if current_user.parent_or_child == 1 %>
         <p><%= link_to '使ったもの一覧', treasurers_path %></p>
       <% end %>
-      <p><%= link_to 'ユーザ情報編集', edit_user_path(@user.id) %></p>
-      <p><%= link_to '削除', user_path(@user.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></p>
+      <!-- <p> link_to 'ユーザ情報編集', edit_user_path(@user.id) </p>
+      <p> link_to '削除', user_path(@user.id), method: :delete </p> -->
     </div>
   </div>
 </div>
