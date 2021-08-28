@@ -8,6 +8,9 @@ class TreasurersController < ApplicationController
   end
   def new
     @treasurer = Treasurer.new
+    unless Management.exists?(kid_id: current_user.id)
+      redirect_to treasurers_path, notice: "先にお父さんかお母さんに親子の設定をしてもらってね！"
+    end
   end
   def create
     @treasurer = current_user.treasurers.build(treasurer_params)
@@ -72,7 +75,7 @@ class TreasurersController < ApplicationController
 
   def set_parent
     if @treasurer.management.kid_id == current_user.id
-      redirect_to user_path(current_user.id), notice: "子供が編集や削除はできません。"
+      redirect_to treasurers_path, notice: "ごめんね・・・子供が中身を変えたり消したりするのはできないの(> <)"
     end
   end
 end
