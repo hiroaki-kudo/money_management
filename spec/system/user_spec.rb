@@ -57,14 +57,12 @@ RSpec.describe 'ユーザー機能', type: :system do
       end
     end
     context '作成ずみの子アカウントでログインしたい場合' do
-      it 'ログインしたあと、ユーザ詳細ページへ飛ぶ' do
+      it 'ログインしたあと、お金の流れの一覧へ飛ぶ' do
         visit new_session_path
         fill_in 'session[email]', with: 'kodomo@kodomo.com'
         fill_in 'session[password]', with: '123qwe'
         click_on 'commit'
-        expect(page).to have_content 'ログイン中'
-        expect(page).to have_content '子'
-        expect(page).to have_content 'kodomo@kodomo.com'
+        expect(page).to have_content 'お金の流れの一覧'
       end
     end
     context 'ログアウトを押した場合' do
