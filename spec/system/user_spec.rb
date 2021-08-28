@@ -110,10 +110,10 @@ describe 'ゲストログイン機能(子)' do
     end
   end
   describe '遷移先のテスト' do
-    context 'ログインしてないユーザが使ったもの一覧に遷移しようとした場合' do
+    context 'ログインしてないユーザが他人のユーザページへ遷移しようとした場合' do
       it 'トップ画面へ遷移する' do
         visit root_path
-        click_on '使ったもの一覧'
+        visit user_path(id:1)
         expect(page).to have_content 'show money'
       end
     end
