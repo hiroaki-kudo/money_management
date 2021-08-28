@@ -4,7 +4,7 @@ class GuestSessionsController < ApplicationController
   def create
     user = User.guest
     log_in(user)
-    redirect_to user_path(current_user.id)
+    redirect_to treasurers_path
     flash[:success] = 'ゲストユーザー(子)でログインしました'
   end
 
