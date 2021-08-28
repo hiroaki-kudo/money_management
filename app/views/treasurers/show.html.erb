@@ -21,15 +21,6 @@
         <% end %>
       </div>
     </div>
-    <div class="treasurer_show_comment_content">
-      <div class="treasurer_show_comment_content2">
-        <p>コメント一覧</p>
-        <div id="comments_area">
-          <%= render partial: 'comments/index', locals: { comments: @comments, treasurer: @treasurer } %>
-        </div>
-        <%= render partial: 'comments/form', locals: { comment: @comment, treasurer: @treasurer } %>
-      </div>
-    </div>
 
     <div class="treasurer_show_chart">
       <%= pie_chart(@sum) %>
@@ -42,6 +33,15 @@
         <p>橙|③:学校で使うもの</p>
         <p>緑|④:その他</p>
       </div>
+    </div>
+  </div>
+  <div class="treasurer_show_comment_content">
+    <div class="treasurer_show_comment_content2">
+      <p>コメント一覧</p>
+      <div id="comments_area">
+        <%= render partial: 'comments/index', locals: { comments: @comments, treasurer: @treasurer } %>
+      </div>
+      <%= render partial: 'comments/form', locals: { comment: @comment, treasurer: @treasurer } %>
     </div>
   </div>
 </div>

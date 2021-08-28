@@ -5,8 +5,8 @@
       <li>
         <div class="comment-content" id ="this_comment_<%= comment.id %>"></div>
         <p><%= comment.content %></p>
-        <p><%= link_to "コメント編集", edit_treasurer_comment_path(treasurer, comment), remote: true if comment.user_id == current_user.id %></p>
-        <p><%= link_to "コメント削除", treasurer_comment_path(comment.treasurer_id, comment.id), method: :delete, remote: true if comment.user_id == current_user.id %></p>
+        <%= link_to "コメント編集", edit_treasurer_comment_path(treasurer, comment), remote: true if comment.user_id == current_user.id %>
+        <%= link_to "コメント削除", treasurer_comment_path(comment.treasurer_id, comment.id), method: :delete, remote: true if comment.user_id == current_user.id %>
       </li>
     <% end %>
   <% end %>
