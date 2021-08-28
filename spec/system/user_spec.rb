@@ -92,7 +92,7 @@ describe 'ゲストログイン機能(子)' do
     it 'ゲストユーザーとしてログインできる' do
       visit root_path
       click_on 'ゲストログイン(子)'
-      expect(page).to have_content 'ゲストユーザ(子)のページ'
+      expect(page).to have_content 'ゲストユーザー(子)でログインしました'
     end
   end
   context '親がゲストログインする場合' do
