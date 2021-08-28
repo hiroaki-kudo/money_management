@@ -7,9 +7,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
       if user.parent_or_child == 0
-        redirect_to user_path(user.id)
+        redirect_to user_path(user.id), notice: "ログインに成功しました"
       else
-        redirect_to treasurers_path
+        redirect_to treasurers_path, notice: "ログインに成功しました"
       end
     else
       flash.now[:danger] = 'ログインに失敗しました'
