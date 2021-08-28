@@ -11,11 +11,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       if @user.parent_or_child == 0
-        session[:user_id] = @user.id
         redirect_to user_path(@user.id), notice: "アカウントを作成しました"
       else
-        redirect_to root_path, notice: "アカウントを作成しました"
+        redirect_to treasurers_path, notice: "アカウントを作成しました"
       end
     else
       render :new
