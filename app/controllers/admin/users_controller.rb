@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   skip_before_action :login_required, only: [:index, :new, :create,]
   before_action :user_admin, only: [:index]
+  before_action :admin_not_destroy, only: [:destroy]
   def index
     @users = User.all.includes(:treasurers)
   end
@@ -32,6 +33,7 @@ class Admin::UsersController < ApplicationController
   end
   def destroy
     @user = User.find(params[:id])
+    binding.pry
     @user.destroy
     redirect_to admin_users_path, notice:"ユーザ情報を削除しました！"
   end
@@ -49,4 +51,9 @@ class Admin::UsersController < ApplicationController
       render action: "index"
     end
   end
+  def admin_not_destroy
+    if (current_user.admin == true) && (User.find(params[:id]).id == current_user.id)
+      redirect_to admin_users_path
+    end
   end
+end

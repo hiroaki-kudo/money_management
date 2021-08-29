@@ -127,7 +127,7 @@ Treasurer.create!(use_date_at: "2021-07-08",
                   management_id: 1
                   )
 
-Treasurer.create!(use_date_at: "2025-07-01",
+Treasurer.create!(use_date_at: "2021-07-11",
                   category_id: 3,
                   use_what: "消しゴム",
                   use_money: 50,
@@ -136,7 +136,7 @@ Treasurer.create!(use_date_at: "2025-07-01",
                   management_id: 1
                   )
 
-Treasurer.create!(use_date_at: "2025-07-01",
+Treasurer.create!(use_date_at: "2021-07-23",
                   category_id: 2,
                   use_what: "バス代",
                   use_money: 300,
