@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   end
   def child_and_parent
     unless child_or_parent?
-      redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
+      redirect_to user_path(current_user.id), notice: "他人や他人の子供のページは見れません"
     end
   end
 end

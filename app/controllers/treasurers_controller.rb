@@ -75,7 +75,7 @@ class TreasurersController < ApplicationController
 
   def set_parent
     if @treasurer.management.kid_id == current_user.id
-      redirect_to treasurers_path, notice: "ごめんね・・・子供が中身を変えたり消したりするのはできないの(> <)"
+      redirect_to treasurers_path, notice: "ごめんね。子供が中身を変えたり消したりするのはできないの"
     end
   end
 end

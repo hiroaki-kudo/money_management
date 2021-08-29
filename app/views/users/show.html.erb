@@ -5,7 +5,7 @@
       <p>メールアドレス: <%= @user.email %></p>
       <p><%= link_to '使ったもの一覧', treasurers_path if current_user.parent_or_child == 1 %></p>
       <p><%= link_to 'ユーザ編集', edit_user_path(@user.id) if current_user.parent_or_child == 0 %></p>
-      <% if (current_user.parent_or_child == 0 && current_user.admin == false) && (current_user.parent_or_child == 0 && @treasurers.blank?) %>
+      <% if (current_user.parent_or_child == 0 && current_user.admin == false) && Management.find_by(parent_id: current_user.id, kid_id: @user.id).blank? %>
         <p><%= link_to '親子関係の登録', new_management_path %></p>
         <p><%= link_to '子供一覧', users_path %></p>
       <% end %>
