@@ -28,14 +28,23 @@
       </ul>
     </header>
     <!-- <div class="validation_mapper"> -->
+
+
       <div class="validation">
         <% flash.each do |key, value| %>
          <%= content_tag(:div, value, class: "#{key}") %>
         <% end %>
       </div>
+
+
+<div class="bg_pattern Polka_v2"></div>
+
     <!-- </div> -->
     <%= yield %>
     <footer>
     </footer>
   </body>
+
+
+
 </html>
