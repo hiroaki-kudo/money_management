@@ -12,24 +12,21 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user.id)
+      if @user.parent_or_child == 0
+        redirect_to user_path(@user.id), notice: "アカウントを作成しました"
+      else
+        redirect_to treasurers_path, notice: "アカウントを作成しました"
+      end
     else
       render :new
     end
   end
   def show
-    @treasurers = User.find(params[:id]).treasurers #修正前
-    # @kidtreasurers = Treasurer.where(user_id: )
-    # binding.pry
-    # @users = Management.where(parent_id: current_user.id)
-
-    # @treasurers = Treasurer.where(parent_id: current_user.id)
+    @treasurers = User.find(params[:id]).treasurers
     # binding.pry
   end
   def edit
     redirect_to user_path(current_user.id) and return if current_user.parent_or_child == 1
-    # redirect_to user_path(@user.id) and return if @user.parent_or_child == 1
-    # redirect_to user_path(@user.id) and return if current_user.parent_or_child == 1
   end
   def update
     if @user.update(user_params)
@@ -57,20 +54,7 @@ class UsersController < ApplicationController
   end
   def child_and_parent
     unless child_or_parent?
-      redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
+      redirect_to user_path(current_user.id), notice: "他人や他人の子供のページは見れません"
     end
   end
 end
-
-
-# def parent_and_child2
-#   if Management.find_by(parent_id: current_user.id).present?
-#     binding.irb
-#     unless
-#       @user.id == current_user.id || current_user.id == Management.find_by(parent_id: current_user.id).parent_id
-#       redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
-#     end
-#   else
-#     redirect_to user_path(current_user.id), notice: "別の子供のページは見れません"
-#   end
-# end

@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   skip_before_action :login_required, only: [:index, :new, :create,]
   before_action :user_admin, only: [:index]
+  before_action :admin_not_destroy, only: [:destroy]
   def index
     @users = User.all.includes(:treasurers)
   end
@@ -32,8 +33,36 @@ class Admin::UsersController < ApplicationController
   end
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_users_path, notice:"ユーザ情報を削除しました！"
+    # binding.pry
+    if @user.parent_or_child == 1 && Management.where(email: @user.email).empty?
+      @user.destroy
+      redirect_to admin_users_path, notice:"ユーザ情報を削除しました！"
+    elsif @user.parent_or_child == 1
+      # binding.pry
+      @management = Management.find_by(kid_id: @user.id)
+      @management.destroy
+      @user.destroy
+      redirect_to admin_users_path, notice:"ユーザ情報を削除しました！"
+    else
+      @user.destroy
+      redirect_to admin_users_path, notice:"ユーザ情報を削除しました！"
+    end
+
+    # if @user.parent_or_child == 1
+    #   binding.pry
+    #   @management = Management.find_by(kid_id: @user.id)
+    #   @management.destroy
+    #   @user.destroy
+    #   redirect_to admin_users_path, notice:"ユーザ情報を削除しました！"
+    # elsif @user.parent_or_child == 1 && @user.id != Management.find_by(kid_id: @user.id).include?
+    #   @user.destroy
+    #   redirect_to admin_users_path, notice:"ユーザ情報を削除しました！"
+    # else
+    #   @user.destroy
+    #   redirect_to admin_users_path, notice:"ユーザ情報を削除しました！"
+    # end
+
+
   end
   private
   def user_params
@@ -49,4 +78,9 @@ class Admin::UsersController < ApplicationController
       render action: "index"
     end
   end
+  def admin_not_destroy
+    if (current_user.admin == true) && (User.find(params[:id]).id == current_user.id)
+      redirect_to admin_users_path, notice:"管理者自身を消すことはできません。"
+    end
   end
+end

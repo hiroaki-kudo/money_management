@@ -13,6 +13,7 @@
     <header>
       <ul class="top_menu clearfix">
         <% if logged_in? %>
+          <li><%= link_to "トップページへ", root_path %></li>
           <li><%= link_to "プロフィール", user_path(current_user.id) %></li>
           <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
           <li><%= link_to "管理者画面へ", admin_users_path if current_user.admin == true %></li>
@@ -27,14 +28,23 @@
       </ul>
     </header>
     <!-- <div class="validation_mapper"> -->
+
+
       <div class="validation">
         <% flash.each do |key, value| %>
          <%= content_tag(:div, value, class: "#{key}") %>
         <% end %>
       </div>
+
+
+<div class="bg_pattern Polka_v2"></div>
+
     <!-- </div> -->
     <%= yield %>
     <footer>
     </footer>
   </body>
+
+
+
 </html>

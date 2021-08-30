@@ -5,7 +5,7 @@
       <p>メールアドレス: <%= @user.email %></p>
       <p><%= link_to '使ったもの一覧', treasurers_path if current_user.parent_or_child == 1 %></p>
       <p><%= link_to 'ユーザ編集', edit_user_path(@user.id) if current_user.parent_or_child == 0 %></p>
-      <% if current_user.parent_or_child == 0 && current_user.admin == false %>
+      <% if (current_user.parent_or_child == 0 && current_user.admin == false) && Management.find_by(parent_id: current_user.id, kid_id: @user.id).blank? %>
         <p><%= link_to '親子関係の登録', new_management_path %></p>
         <p><%= link_to '子供一覧', users_path %></p>
       <% end %>
@@ -13,17 +13,6 @@
   </div>
 
   <% if current_user.parent_or_child == 0 && current_user.admin == false %>
-    <!-- <div class="user_show_content2">
-      <div class="user_show_content3">
-       〜子供の使用項目は以下の通りです〜
-      </div>
-    </div> -->
-
-    <!--  < ＠kids = @user.treasurers %> %>
-    <!-- < @kids.each do |kid| > -->
-    <!-- < @users.each do |user| %>
-    <= user.kid.name %> -->
-
     <div class="user_show_task2">
       <table class="user_show_task">
         <tr>
@@ -49,8 +38,5 @@
         <% end %>
       </table>
     </div>
-
-    <% end %>
-
-  <!-- < end %> -->
+  <% end %>
 </div>

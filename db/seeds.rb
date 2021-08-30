@@ -90,12 +90,12 @@ Management.create!(email: "torankus@torankus.com",
                    kid_id: 7
                    )
 
-Management.create!(email: "yuusaku@yuusaku.com",
+Management.create!(email: "shinichi@shinichi.com",
                    parent_id: 8,
                    kid_id: 9
                    )
 
-Management.create!(email: "hiroshi@hiroshi.com",
+Management.create!(email: "shintyan@shintyan.com",
                   parent_id: 10,
                   kid_id: 11
                   )
@@ -127,7 +127,7 @@ Treasurer.create!(use_date_at: "2021-07-08",
                   management_id: 1
                   )
 
-Treasurer.create!(use_date_at: "2025-07-01",
+Treasurer.create!(use_date_at: "2021-07-11",
                   category_id: 3,
                   use_what: "消しゴム",
                   use_money: 50,
@@ -136,7 +136,7 @@ Treasurer.create!(use_date_at: "2025-07-01",
                   management_id: 1
                   )
 
-Treasurer.create!(use_date_at: "2025-07-01",
+Treasurer.create!(use_date_at: "2021-07-23",
                   category_id: 2,
                   use_what: "バス代",
                   use_money: 300,

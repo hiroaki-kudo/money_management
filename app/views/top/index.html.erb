@@ -1,24 +1,33 @@
-<div class="top_content">
+<div class="top_wapper">
   <div class="top_title">
     <h1>show money</h1>
   </div>
-  <div class="top_content2">
-    普段子供が何にお金を使っているか気になったことはありませんか？<br>
-    口頭の説明だけだと後で見返すことができないし、メモを残すにしても<br>
-    毎回メモとして残すのは大変です。<br>
-    これは子供に何にいくら使ったかを記録させて、親が後からでも見ることが<br>
-    できるアプリです。<br>
-    <br>
-    操作方法<br>
-    ①親のアカウントを作成<br>
-    ②子のアカウントを作成<br>
-    ③親子の関係性を持たせるために親が親子関係登録画面へ飛び子供のアドレスを入力する<br>
-    ④子供は使った物などを自由に投稿することができる
-  </div>
-  <div class="top_chart">
-    <%= pie_chart(@chart) %>
-  </div>
-  <div class="top_content3">
-    <%= link_to '使ったもの一覧', treasurers_path %>
+  <div class="top_content">
+    <div class="top_content2">
+      普段子供が何にお金を使っているか気になったことはありませんか？<br>
+      お金の使い方は一歩間違えばトラブルの元になることもあります。<br>
+      これは親が子供のお金の使い道などをしっかり把握できるように作られたアプリです。<br>
+      <br>
+      操作方法<br>
+      &nbsp;&nbsp;①子のアカウントを作成してください<br>
+      &nbsp;&nbsp;②親のアカウントを作成してください<br>
+      &nbsp;&nbsp;③親はマイページから親子関係登録のリンクを押して、子供のアドレスを登録してください<br>
+      <br>
+      子供ができる事<br>
+      &nbsp;&nbsp;・何にいくら使ったのかなどの記録<br>
+      &nbsp;&nbsp;・使ったものなどに対してのコメント<br>
+      &nbsp;&nbsp;・大事な記録に対してのお気に入り<br>
+      <br>
+      親ができる事<br>
+      &nbsp;&nbsp;・子供が記録した内容の閲覧・編集・削除<br>
+      &nbsp;&nbsp;・子供が使ったものなどに対してのコメント<br>
+      &nbsp;&nbsp;・親子関係の登録(子供は複数人登録できます)<br>
+
+    </div>
+    <div class="top_space">
+    </div>
+    <div class="top_chart">
+      <%= pie_chart(@chart) %>
+    </div>
   </div>
 </div>
