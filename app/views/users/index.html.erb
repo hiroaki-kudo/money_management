@@ -1,12 +1,19 @@
-
-<div class="user_index_content">
-  <p>子供が存在していれば子供一覧が表示されます</p>
-  <% index = 0 %>
-  <% @users.each do |user| %>
-    <%= user.kid.name %>
-    <%= link_to 'ユーザ情報と使った物たちを表示', user_path(user.kid.id) ,class: user.id, id: "detail_#{index}" %>
-    <%= link_to 'ユーザ編集', edit_user_path(user.kid.id), id: "edit_#{index}" %>
-    <%= link_to '親子関係の削除', management_path(user.kid.id), method: :delete, id: "delete_#{index}" %> <br>
-    <% index += 1 %>
-  <% end %>
+<div class="user_index_mapper">
+  <h1 class="user_index_title">子供一覧画面</h1>
+  <div class="user_index_content2">
+    <div class="user_index_content">
+      <% index = 0 %>
+      <table>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.kid.name %></td>
+            <td><%= link_to '子供の情報', user_path(user.kid.id) ,class: user.id, id: "detail_#{index}" %></td>
+            <td><%= link_to '子供の編集', edit_user_path(user.kid.id), id: "edit_#{index}" %></td>
+            <td><%= link_to '親子関係の削除', management_path(user.kid.id), method: :delete, id: "delete_#{index}" %></td>
+            <% index += 1 %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>
